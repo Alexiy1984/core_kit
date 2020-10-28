@@ -1,0 +1,57 @@
+@import 'variables';
+
+$theme: $main_theme;
+
+@mixin text-size($fz) {
+  .form-control {
+    font-size: $fz;
+  }
+
+  .input-group-text {
+    font-size: $fz;
+
+    svg {
+      width: $fz;
+      height: auto;
+    }
+  }
+}
+
+@mixin input-colors($txt_color, $backgorund_color: #fff) {
+  color: $txt_color;
+  background-color: $backgorund_color;
+
+  svg {
+    path {
+      fill: $txt_color;
+    }
+  }
+}
+
+.input {
+  &-group {
+    height: 50px;
+
+    @include text-size(18px);
+
+    .form-control {
+      @include input-colors(map_get($theme, 'grey-dark_3'));
+    }
+
+    .input-group-text {
+      @include input-colors(map_get($theme, 'grey-dark_3'), map_get($theme, 'grey-dark_1'));
+    }
+
+    &_small {
+      height: 40px;
+      
+      @include text-size(16px);
+    }
+
+    &_large  {
+      height: 60px;
+    
+      @include text-size(22px);
+    }
+  }
+}

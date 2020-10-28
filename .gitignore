@@ -1,0 +1,5 @@
+#Compiled folder
+public/
+
+# Dependency directories
+node_modules/

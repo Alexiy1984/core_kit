@@ -1,0 +1,114 @@
+@import 'variables';
+
+$theme: $main_theme;
+
+.btn {
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  height: 50px;
+  padding-left: 18px;
+  padding-right: 18px;
+
+  svg {
+    width: 18px;
+    height: auto;
+    position: relative;
+
+    path {
+      fill: #fff;
+    }
+  }
+
+  &_small {
+    @extend .btn;
+    height: 40px;
+    font-size: 16px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  &_large {
+    @extend .btn;
+    height: 60px;
+    font-size: 20px;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  &-primary {
+    background-color: map_get($theme, 'primary');
+    border-color: map_get($theme, 'primary');
+
+    &:visited {
+      background-color: map_get($theme, 'primary');
+      border-color: map_get($theme, 'primary');
+    }
+
+    &:hover {
+      background-color: map_get($theme, 'primary-hover');
+      border-color:map_get($theme, 'primary-hover');
+    }
+
+    &:active {
+      background-color: map_get($theme, 'primary-active');
+      border-color:map_get($theme, 'primary-active');
+    }
+  }
+
+  &_outline {
+    @extend .btn;
+    background-color: #fff;
+    color: rgba($color: #000000, $alpha: 1.0);
+    border-color: rgba($color: #000000, $alpha: 0.1);
+
+    svg {
+      path {
+        fill: rgba($color: #000000, $alpha: 1.0);
+      }
+    }
+  }
+
+  &_disabled {
+    @extend .btn;
+    background-color: rgba($color: (#000000), $alpha: 0.05);
+    color: rgba($color: #000000, $alpha: 0.3);
+    border-color: rgba($color: #000000, $alpha: 0.1);
+
+    svg {
+      path {
+        fill: rgba($color: #000000, $alpha: 0.3);
+      }
+    }
+  }
+
+  &_danger {
+    @extend .btn;
+    color: #fff;
+    background-color: map_get($theme, 'danger');
+
+    &:hover {
+      background-color: map_get($theme, 'danger-hover');
+    }
+  }
+
+  &_succes {
+    @extend .btn;
+    color: #fff;
+    background-color: map_get($theme, 'succes');
+
+    &:hover {
+      background-color: map_get($theme, 'succes-hover');
+    }
+  }
+
+  &_warning {
+    @extend .btn;
+    color: #fff;
+    background-color: map_get($theme, 'warning');
+
+    &:hover {
+      background-color: map_get($theme, 'warning-hover');
+    }
+  }
+}
