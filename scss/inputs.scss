@@ -1,3 +1,5 @@
+@import '../node_modules/bootstrap/scss/variables.scss';
+@import '../node_modules/bootstrap/scss/input-group.scss';
 @import 'variables';
 
 $theme: $main_theme;
@@ -35,11 +37,17 @@ $theme: $main_theme;
     @include text-size(18px);
 
     .form-control {
+      height: 100%;
       @include input-colors(map_get($theme, 'grey-dark_3'));
     }
 
     .input-group-text {
       @include input-colors(map_get($theme, 'grey-dark_3'), map_get($theme, 'grey-dark_1'));
+
+      &_nobg {
+        @extend .input-group-text;
+        background-color: #fff;
+      }
     }
 
     &_small {
