@@ -18,7 +18,7 @@ var prefixerOptions = {
 };
  
 function  buildHTML(cb) {
-  src('views/*.pug')
+  src('views/**/*.pug')
     .pipe(plumber())
     .pipe(data(function(file) {
       return JSON.parse(fs.readFileSync('./data/data.json'))
@@ -55,12 +55,7 @@ function browserSync(cb) {
   watch('./public/**.html').on('change', sync.reload);
 }
 
-function defaultTask(cb) {
-  // place code for your default task here
-  cb();
-}
-
-exports.default = defaultTask;
+exports.default = parallel(buildHTML, generateCSS);
 exports.pug = buildHTML;
 exports.sync = browserSync;
 exports.css = generateCSS;

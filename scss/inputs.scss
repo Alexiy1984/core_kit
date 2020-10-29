@@ -1,6 +1,6 @@
-@import '../node_modules/bootstrap/scss/variables.scss';
-@import '../node_modules/bootstrap/scss/input-group.scss';
 @import 'variables';
+@import 'node_modules/bootstrap/scss/forms';
+@import 'node_modules/bootstrap/scss/input-group';
 
 $theme: $main_theme;
 
@@ -15,6 +15,15 @@ $theme: $main_theme;
     svg {
       width: $fz;
       height: auto;
+    }
+  }
+
+  .button {
+    font-size: $fz;
+
+    &_large,
+    &_small {
+      font-size: $fz;
     }
   }
 }
@@ -33,12 +42,22 @@ $theme: $main_theme;
 .input {
   &-group {
     height: 50px;
+    border-radius: 10px;
 
     @include text-size(18px);
 
     .form-control {
       height: 100%;
       @include input-colors(map_get($theme, 'grey-dark_3'));
+    }
+
+    .button {
+      height: 100%;
+
+      &_large,
+      &_small {
+        height: 100%;
+      }
     }
 
     .input-group-text {
