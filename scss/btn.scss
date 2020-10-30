@@ -80,7 +80,7 @@ $theme: $main_theme;
   }
 
   &_primary {
-    @extend .btn;
+    @extend .button;
     background-color: map_get($theme, 'primary');
     color: #fff;
     border-color: map_get($theme, 'primary');
@@ -105,7 +105,7 @@ $theme: $main_theme;
   }
 
   &_outline {
-    @extend .btn;
+    @extend .button;
     background-color: #fff;
     color: rgba($color: #000000, $alpha: 1.0);
     border-color: rgba($color: #000000, $alpha: 0.1);
@@ -122,7 +122,7 @@ $theme: $main_theme;
   }
 
   &_disabled {
-    @extend .btn;
+    @extend .button;
     background-color: rgba($color: (#000000), $alpha: 0.05);
     color: rgba($color: #000000, $alpha: 0.3);
     border-color: rgba($color: #000000, $alpha: 0.1);
@@ -140,7 +140,7 @@ $theme: $main_theme;
   }
 
   &_danger {
-    @extend .btn;
+    @extend .button;
     color: #fff;
     background-color: map_get($theme, 'danger');
 
@@ -151,7 +151,7 @@ $theme: $main_theme;
   }
 
   &_succes {
-    @extend .btn;
+    @extend .button;
     color: #fff;
     background-color: map_get($theme, 'succes');
 
@@ -162,7 +162,7 @@ $theme: $main_theme;
   }
 
   &_warning {
-    @extend .btn;
+    @extend .button;
     color: #fff;
     background-color: map_get($theme, 'warning');
 
@@ -173,7 +173,7 @@ $theme: $main_theme;
   }
 
   &_for-input {
-    @extend .btn;
+    @extend .button;
     color: map_get($theme, 'grey-dark_3');
   }
 }
