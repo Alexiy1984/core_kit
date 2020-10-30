@@ -7,7 +7,8 @@ fs = require('fs'),
 sass = require('gulp-sass'),
 concat = require('gulp-concat'),
 autoprefixer = require('gulp-autoprefixer'),
-plumber = require('gulp-plumber');
+plumber = require('gulp-plumber'),
+del = require('del');
 
 var sassOptions = {
   outputStyle: 'expanded',
@@ -18,6 +19,7 @@ var prefixerOptions = {
 };
  
 function  buildHTML(cb) {
+  del(['public/**', '!public', '!public/stylesheets']);
   src('views/**/*.pug')
     .pipe(plumber())
     .pipe(data(function(file) {
@@ -33,6 +35,7 @@ function  buildHTML(cb) {
 }
 
 function generateCSS(cb) {
+  del(['public/stylesheets/**', '!public/stylesheets']);
   src('./scss/*.scss')
       .pipe(sass(sassOptions).on('error', sass.logError))
       .pipe(autoprefixer(prefixerOptions))
@@ -43,12 +46,15 @@ function generateCSS(cb) {
 }
 
 function browserSync(cb) {
+  buildHTML(cb); 
+  generateCSS(cb);
+
   sync.init({
       server: {
           baseDir: './public'
       }
   });
-
+  
   watch('./views/*.pug', buildHTML);
   watch('./views/**/*.pug', buildHTML);
   watch('./scss', generateCSS);
@@ -56,6 +62,6 @@ function browserSync(cb) {
 }
 
 exports.default = parallel(buildHTML, generateCSS);
-exports.pug = buildHTML;
+exports.html = buildHTML;
 exports.sync = browserSync;
 exports.css = generateCSS;

@@ -9,6 +9,15 @@
 2. Install all npm dependencies
   run `npm install`
 
-### How to use
+### How to bulid project
 
-run `gulp`
+1. To bulid all project
+  run `gulp`
+2. To buldl html documents
+  run `gulp html`
+3. To generate css
+  run `gulp css`  
+
+### For development purposes
+
+run `gulp sync`
