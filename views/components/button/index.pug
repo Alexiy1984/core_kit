@@ -5,6 +5,7 @@ html(lang="en")
     title Index
     link(rel="stylesheet", href="../../stylesheets/index.css")
     link(rel="stylesheet", href="../../stylesheets/button.css")
+    script(src="../../javascripts/jquery.js")
   body
     .container
       .row.mt-5
@@ -15,7 +16,7 @@ html(lang="en")
           .ml-3
           include button_large
           .ml-3
-        .col-12.d-flex.align-items-center
+        .col-12.d-flex.align-items-center.mb-3
           include button_outline
           .ml-3
           include button_disabled
@@ -25,3 +26,11 @@ html(lang="en")
           include button_succes
           .ml-3
           include button_warning
+        .col-12.d-flex.align-items-center
+          include combined_button
+        .col-6
+          p
+            span#multiple
+        .col-6
+          p
+            span#select       

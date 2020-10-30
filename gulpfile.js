@@ -8,7 +8,8 @@ sass = require('gulp-sass'),
 concat = require('gulp-concat'),
 autoprefixer = require('gulp-autoprefixer'),
 plumber = require('gulp-plumber'),
-del = require('del');
+del = require('del'),
+babel = require("gulp-babel");
 
 var sassOptions = {
   outputStyle: 'expanded',
@@ -19,7 +20,7 @@ var prefixerOptions = {
 };
  
 function  buildHTML(cb) {
-  del(['public/**', '!public', '!public/stylesheets']);
+  del(['public/**', '!public', '!public/stylesheets', '!public/javascripts']);
   src('views/**/*.pug')
     .pipe(plumber())
     .pipe(data(function(file) {
@@ -45,9 +46,18 @@ function generateCSS(cb) {
   cb();
 }
 
+function buldJQuery(cb) {
+  src('node_modules/jquery/dist/jquery.js')
+    .pipe(babel()) 
+    .pipe(dest('public/javascripts'))
+    .pipe(sync.stream());
+  cb();
+};
+
 function browserSync(cb) {
   buildHTML(cb); 
   generateCSS(cb);
+  buldJQuery(cb);
 
   sync.init({
       server: {
@@ -61,7 +71,8 @@ function browserSync(cb) {
   watch('./public/**.html').on('change', sync.reload);
 }
 
-exports.default = parallel(buildHTML, generateCSS);
+exports.default = parallel(buildHTML, generateCSS, buldJQuery);
 exports.html = buildHTML;
 exports.sync = browserSync;
 exports.css = generateCSS;
+exports.jquery = buldJQuery;
