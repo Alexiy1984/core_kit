@@ -13,6 +13,7 @@ $theme: $main_theme;
   height: 50px;
   padding-left: 18px;
   padding-right: 18px;
+  white-space: nowrap;
 
   svg {
     width: 18px;
@@ -79,22 +80,26 @@ $theme: $main_theme;
   }
 
   &_primary {
-    @extend .btn-primary;
+    @extend .btn;
     background-color: map_get($theme, 'primary');
+    color: #fff;
     border-color: map_get($theme, 'primary');
 
     &:visited {
       background-color: map_get($theme, 'primary');
+      color: #fff;
       border-color: map_get($theme, 'primary');
     }
 
     &:hover {
       background-color: map_get($theme, 'primary-hover');
+      color: #fff;
       border-color:map_get($theme, 'primary-hover');
     }
 
     &:active {
       background-color: map_get($theme, 'primary-active');
+      color: #fff;
       border-color:map_get($theme, 'primary-active');
     }
   }

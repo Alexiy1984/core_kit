@@ -60,6 +60,31 @@ $theme: $main_theme;
       }
     }
 
+    &_noborder {
+      @extend .input-group;
+
+      & > * {
+        border-left-width: 0;
+        border-right-width: 0;
+
+        &:first-child {
+          border-left-width: 1px;
+
+          & > * {
+            border-right-width: 0;
+          }
+        }
+
+        &:last-child {
+          border-right-width: 1px;
+
+          & > * {
+            border-left-width: 0;
+          }
+        }
+      }
+    }
+
     .input-group-text {
       @include input-colors(map_get($theme, 'grey-dark_3'), map_get($theme, 'grey-dark_1'));
 
@@ -80,5 +105,15 @@ $theme: $main_theme;
     
       @include text-size(22px);
     }
+  }
+}
+
+.form-control_succes {
+  @extend .form-control;
+  border-color: rgb(1, 160, 1);
+  color: rgb(1, 160, 1);
+
+  &::placeholder {
+    color: rgb(1, 160, 1);
   }
 }

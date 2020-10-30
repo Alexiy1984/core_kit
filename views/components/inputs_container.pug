@@ -24,9 +24,9 @@ div.container
             span(class='input-group-text_nobg')
               include icon_eye
     div(class='col-12 col-md-6 mb-3')
-      div(class='input-group input-group_large mb-3')
+      div(class='input-group_noborder input-group_large mb-3')
           div(class='input-group-prepend')
-            span(class='input-group-text')
+            span(class='input-group-text_nobg')
               include icon_lightning
           input(class='form-control' type="text" name="text-1")
           div(class='input-group-append')
@@ -40,7 +40,16 @@ div.container
           div(class='input-group-append')
             button(class='button button_primary') 
               include icon_eye 
-    div(class='col-12 col-md-6 mb-3')
+    div(class='col-12 col-md-3 mb-3')
       div(class='form-group')
-        input(class='form-control' type="text")                       
+        input(class='form-control' type="text" placeholder="Normal text")
+    div(class='col-12 col-md-3 mb-3')
+      div(class='form-group')
+        input(class='form-control_succes' type="text" placeholder="Succes text")
+    div(class='col-12 col-md-3 mb-3')
+      div(class='form-group')
+        input(class='form-control' type="text" placeholder="Warning text")  
+    div(class='col-12 col-md-3 mb-3')
+      div(class='form-group')
+        input(class='form-control' type="text" placeholder="Danger text")                               
 
