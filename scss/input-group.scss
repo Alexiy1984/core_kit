@@ -81,31 +81,6 @@ $theme: $main_theme;
       @include text-size(20px);
     }
 
-    &_noborder {
-      @extend .input-group;
-
-      & > * {
-        border-left-width: 0;
-        border-right-width: 0;
-
-        &:first-child {
-          border-left-width: 1px;
-
-          & > * {
-            border-right-width: 0;
-          }
-        }
-
-        &:last-child {
-          border-right-width: 1px;
-
-          & > * {
-            border-left-width: 0;
-          }
-        }
-      }
-    }
-
     &_info {
       @extend .input-group;
       border-color: rgba(45, 116, 255, 1);
@@ -123,6 +98,10 @@ $theme: $main_theme;
           fill: rgba(45, 116, 255, 1);
         }
       }
+
+      .form-control {
+        border-color: rgba(45, 116, 255, 1);
+      }  
     }
 
     &_succes {
@@ -144,6 +123,8 @@ $theme: $main_theme;
       }
 
       .form-control {
+        border-color: rgba(1, 160, 1, 1);
+
         &:focus,
         &.focus {
           border-color: rgba(1, 160, 1, 1);
@@ -171,6 +152,8 @@ $theme: $main_theme;
       }
 
       .form-control {
+        border-color: rgba(254, 183, 47, 1);
+
         &:focus,
         &.focus {
           border-color: rgba(254, 183, 47, 1);
@@ -183,7 +166,7 @@ $theme: $main_theme;
       @extend .input-group;
       border-color: rgba(250, 74, 106, 1);
   
-      & > * {
+      & * > {
         border-color: rgba(250, 74, 106, 1);
       }
 
@@ -198,10 +181,42 @@ $theme: $main_theme;
       }
 
       .form-control {
+        border-color: rgba(250, 74, 106, 1);
+
         &:focus,
         &.focus {
           border-color: rgba(250, 74, 106, 1);
           box-shadow: rgba(250, 74, 106, 0.25) 0px 0px 0px 0.2rem;
+        }
+      }
+    }
+
+    &_noborder {
+      @extend .input-group;
+
+      .form-control {
+        border-left-width: 0;
+        border-right-width: 0;
+      }
+
+      & > * {
+        border-left-width: 0;
+        border-right-width: 0;
+
+        &:first-child {
+          border-left-width: 1px;
+
+          & > * {
+            border-right-width: 0;
+          }
+        }
+
+        &:last-child {
+          border-right-width: 1px;
+
+          & > * {
+            border-left-width: 0;
+          }
         }
       }
     }

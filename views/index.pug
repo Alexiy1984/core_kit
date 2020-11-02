@@ -5,7 +5,8 @@ html(lang="en")
     title Index
     link(rel="stylesheet", href="stylesheets/index.css")
     link(rel="stylesheet", href="stylesheets/button.css")
-    link(rel="stylesheet", href="stylesheets/inputs.css")
+    link(rel="stylesheet", href="stylesheets/input-group.css")
+    link(rel="stylesheet", href="stylesheets/form-control.css")
     link(rel="stylesheet", href="stylesheets/service-styles.css")
     script(src="javascripts/jquery.js")
   body
@@ -13,4 +14,5 @@ html(lang="en")
     include layouts/combined_buttons_container
     include layouts/inputs_container
     include components/brand-colors-palette
-    include components/svg-sprite
+    svg(width="24px", height="auto")
+      use(xlink:href="components/svg-sprite.svg#Warning")

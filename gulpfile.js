@@ -21,7 +21,11 @@ var prefixerOptions = {
  
 function  buildHTML(cb) {
   del(['public/**', '!public', '!public/stylesheets', '!public/javascripts']);
-  src('views/**/*.pug')
+  src([ 
+    'views/**/*.pug',
+    '!views/**/_*/',
+    '!views/**/_*/**/*',
+  ])
     .pipe(plumber())
     .pipe(data(function(file) {
       return JSON.parse(fs.readFileSync('./data/data.json'))
