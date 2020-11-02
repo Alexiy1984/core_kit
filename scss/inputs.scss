@@ -28,17 +28,6 @@ $theme: $main_theme;
   }
 }
 
-@mixin input-colors($txt_color, $backgorund_color: #fff) {
-  color: $txt_color;
-  background-color: $backgorund_color;
-
-  svg {
-    path {
-      fill: $txt_color;
-    }
-  }
-}
-
 .input {
   &-group {
     height: 50px;
@@ -46,9 +35,19 @@ $theme: $main_theme;
 
     @include text-size(18px);
 
+    svg {
+      path {
+        fill: map_get($theme, 'grey-dark_3');
+      }
+    }
+
     .form-control {
       height: 100%;
-      @include input-colors(map_get($theme, 'grey-dark_3'));
+      color: map_get($theme, 'grey-dark_6');
+
+      &::placeholder {
+        color: map_get($theme, 'grey-dark_3');
+      }
     }
 
     .button {
@@ -58,6 +57,28 @@ $theme: $main_theme;
       &_small {
         height: 100%;
       }
+    }
+
+    .input-group-text {
+      color: map_get($theme, 'grey-dark_3');
+      background-color: map_get($theme, 'grey-dark_1');
+
+      &_nobg {
+        @extend .input-group-text;
+        background-color: #fff;
+      }
+    }
+
+    &_small {
+      height: 40px;
+      
+      @include text-size(16px);
+    }
+
+    &_large  {
+      height: 60px;
+    
+      @include text-size(20px);
     }
 
     &_noborder {
@@ -85,78 +106,108 @@ $theme: $main_theme;
       }
     }
 
-    .input-group-text {
-      @include input-colors(map_get($theme, 'grey-dark_3'), map_get($theme, 'grey-dark_1'));
+    &_info {
+      @extend .input-group;
+      border-color: rgba(45, 116, 255, 1);
+  
+      & > * {
+        border-color: rgba(45, 116, 255, 1);
+      }
 
-      &_nobg {
-        @extend .input-group-text;
-        background-color: #fff;
+      .input-group-text {
+        border-color: rgba(45, 116, 255, 1);
+      }
+
+      svg {
+        path {
+          fill: rgba(45, 116, 255, 1);
+        }
       }
     }
 
-    &_small {
-      height: 40px;
-      
-      @include text-size(16px);
+    &_succes {
+      @extend .input-group;
+      border-color: rgba(1, 160, 1, 1);
+  
+      & > * {
+        border-color: rgba(1, 160, 1, 1);
+      }
+
+      .input-group-text {
+        border-color: rgba(1, 160, 1, 1);
+      }
+
+      svg {
+        path {
+          fill: rgba(1, 160, 1, 1);
+        }
+      }
+
+      .form-control {
+        &:focus,
+        &.focus {
+          border-color: rgba(1, 160, 1, 1);
+          box-shadow: rgba(1, 160, 1, 0.25) 0px 0px 0px 0.2rem;
+        }
+      }
     }
 
-    &_large  {
-      height: 60px;
-    
-      @include text-size(22px);
+    &_warning {
+      @extend .input-group;
+      border-color: rgba(254, 183, 47, 1);
+  
+      & > * {
+        border-color: rgba(254, 183, 47, 1);
+      }
+
+      .input-group-text {
+        border-color: rgba(254, 183, 47, 1);
+      }
+
+      svg {
+        path {
+          fill: rgba(254, 183, 47, 1);
+        }
+      }
+
+      .form-control {
+        &:focus,
+        &.focus {
+          border-color: rgba(254, 183, 47, 1);
+          box-shadow: rgba(254, 183, 47, 0.25) 0px 0px 0px 0.2rem;
+        }
+      }
+    }
+
+    &_danger {
+      @extend .input-group;
+      border-color: rgba(250, 74, 106, 1);
+  
+      & > * {
+        border-color: rgba(250, 74, 106, 1);
+      }
+
+      .input-group-text {
+        border-color: rgba(250, 74, 106, 1);
+      }
+
+      svg {
+        path {
+          fill: rgba(250, 74, 106, 1);
+        }
+      }
+
+      .form-control {
+        &:focus,
+        &.focus {
+          border-color: rgba(250, 74, 106, 1);
+          box-shadow: rgba(250, 74, 106, 0.25) 0px 0px 0px 0.2rem;
+        }
+      }
     }
   }
 }
 
-.form-control {
-  color: map_get($theme, 'grey-dark_6');
 
-  &::placeholder {
-    color: map_get($theme, 'grey-dark_3');
-  }
-}
 
-.form-control_info {
-  @extend .form-control;
-  border-color: rgba(45, 116, 255, 1);
 
-  &::placeholder {
-    color: map_get($theme, 'grey-dark_3');
-  }
-
-  &:focus,
-  &.focus {
-    border-color: rgba(45, 116, 255, 1);
-    box-shadow: rgba(45, 116, 255, 0.25) 0px 0px 0px 0.2rem;
-  }
-}
-
-.form-control_succes {
-  @extend .form-control;
-  border-color: rgba(1, 160, 1, 1);
-
-  &::placeholder {
-    color: map_get($theme, 'grey-dark_3');
-  }
-
-  &:focus,
-  &.focus {
-    border-color: rgba(1, 160, 1, 1);
-    box-shadow: rgba(1, 160, 1, 0.25) 0px 0px 0px 0.2rem;
-  }
-}
-
-.form-control_warning {
-  @extend .form-control;
-  border-color: rgba(254, 183, 47, 1);
-
-  &::placeholder {
-    color: map_get($theme, 'grey-dark_3');
-  }
-
-  &:focus,
-  &.focus {
-    border-color: rgba(254, 183, 47, 1);
-    box-shadow: rgba(254, 183, 47, 0.25) 0px 0px 0px 0.2rem;
-  }
-}
