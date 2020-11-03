@@ -17,3 +17,36 @@ svg
   use(xlink:href="<assets-dir-for-svg>/base-sprite.svg#Check circle")
 ```
 
+## Sprite parts ids
+  
+Alert
+Bag\
+Bookmark\
+Box\
+Card\
+Cart\
+Chat\
+Check circle\
+Check\
+Clock\
+Dot\
+Earth\
+Flash\
+Folder\
+Heart\
+House\
+Image\
+Inbox\
+Key\
+Mail\
+Message\
+Notification\
+Phone\
+Play\
+Search\
+Send\
+Succes\
+Visibility Off\
+Visibility\
+Warning
+
