@@ -20,7 +20,7 @@ var prefixerOptions = {
 };
  
 function  buildHTML(cb) {
-  del(['public/**', '!public', '!public/stylesheets', '!public/javascripts']);
+  del(['public/**', '!public', '!public/stylesheets', '!public/javascripts', '!public/assets']);
   src([ 
     'views/**/*.pug',
     '!views/**/_*/',
@@ -50,6 +50,13 @@ function generateCSS(cb) {
   cb();
 }
 
+function copyAssets(cb) {
+  del(['public/assets/**', '!public/assets', '!public/assets/svg']);
+  src('./assets/**/*')
+    .pipe(dest('public/assets'))
+  cb();
+}
+
 function buldJQuery(cb) {
   src('node_modules/jquery/dist/jquery.js')
     .pipe(babel()) 
@@ -62,6 +69,7 @@ function browserSync(cb) {
   buildHTML(cb); 
   generateCSS(cb);
   buldJQuery(cb);
+  copyAssets(cb);
 
   sync.init({
       server: {
@@ -69,13 +77,14 @@ function browserSync(cb) {
       }
   });
   
+  watch('./assets/**/*', copyAssets);
   watch('./views/*.pug', buildHTML);
   watch('./views/**/*.pug', buildHTML);
   watch('./scss', generateCSS);
   watch('./public/**.html').on('change', sync.reload);
 }
 
-exports.default = parallel(buildHTML, generateCSS, buldJQuery);
+exports.default = parallel(buildHTML, generateCSS, buldJQuery, copyAssets);
 exports.html = buildHTML;
 exports.sync = browserSync;
 exports.css = generateCSS;
