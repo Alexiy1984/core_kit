@@ -29,6 +29,52 @@ $theme: $main_theme;
   }
 }
 
+@mixin button_colors($normal_colors, $hover_colors, $active_colors: $hover_colors) {
+  @include set_colors($normal_colors);
+
+  &:hover {
+    @include set_colors($hover_colors);
+  }
+
+  &:active {
+    @include set_colors($active_colors);
+  }
+}
+
+@mixin set_colors($colorset) {
+  @if type-of($colorset) == list {
+    color: nth($colorset, 1);
+    background-color: nth($colorset, 2);
+    @if (length($colorset) > 2) {
+      border-color: nth($colorset, 3);
+    }
+    @else {
+      border-color: nth($colorset, 2);
+
+      & > svg {
+        fill: nth($colorset, 1);
+      }
+    } 
+    @if (length($colorset) > 3) {
+      & > svg {
+        fill: nth($colorset, 4);
+      }
+    }
+    @else {
+      & > svg {
+        fill: nth($colorset, 1);
+      }
+    }
+  }
+}
+
+$danger_button_normal_colorset : #fff, map_get($theme, 'danger'), map_get($theme, 'danger');
+$danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0, 0, 0);
+
+%danger_button_colors {
+  @include button_colors($danger_button_normal_colorset, $danger_button_hover_colorset);
+}
+
 .button {
   @extend .btn;
   border-radius: 10px;
@@ -161,13 +207,7 @@ $theme: $main_theme;
 
   &_danger {
     @extend .button;
-    color: #fff;
-    background-color: map_get($theme, 'danger');
-
-    &:hover {
-      background-color: map_get($theme, 'danger-hover');
-      color: #fff;
-    }
+    @extend %danger_button_colors;
   }
 
   &_succes {
@@ -278,13 +318,7 @@ $theme: $main_theme;
       @extend .button_outline;
 
       &.selected {
-        color: #fff;
-        background-color: map_get($theme, 'danger');
-  
-        &:hover {
-          background-color: map_get($theme, 'danger-hover');
-          color: #fff;
-        }
+        @extend %danger_button_colors;
       }
     }
   }
@@ -298,6 +332,10 @@ $theme: $main_theme;
       &.selected {
         color: #fff;
         background-color: map_get($theme, 'warning');
+
+        & > svg {
+          fill: #fff;
+        }
             
         &:hover {
           background-color: map_get($theme, 'warning-hover');
@@ -317,6 +355,10 @@ $theme: $main_theme;
         color: #fff;
         background-color: map_get($theme, 'succes');
 
+        & > svg {
+          fill: #fff;
+        }
+
         &:hover {
           background-color: map_get($theme, 'succes-hover');
           color: #fff;
@@ -332,17 +374,16 @@ $theme: $main_theme;
       @extend .button_outline;
 
       &.selected {
+        & > svg {
+          fill: #fff;
+        }
+
         &:nth-child(4n+1) {
           color: #fff;
           background-color: map_get($theme, 'primary');
 
           & > svg {
             fill: #fff;
-  
-            & * {
-              fill: inherit;
-              stroke: inherit;
-            }
           }
   
           &:hover {
@@ -351,40 +392,34 @@ $theme: $main_theme;
           }
         }
   
-        &:nth-child(4n+2) {
-          
+        &:nth-child(4n+2) {      
+          color: #fff;
+          background-color: map_get($theme, 'succes');
+  
+          &:hover {
+            background-color: map_get($theme, 'succes-hover');
             color: #fff;
-            background-color: map_get($theme, 'succes');
-    
-            &:hover {
-              background-color: map_get($theme, 'succes-hover');
-              color: #fff;
-            }
-          
+          }
         }
   
         &:nth-child(4n+3) {
-          
+          color: #fff;
+          background-color: map_get($theme, 'warning');
+  
+          &:hover {
+            background-color: map_get($theme, 'warning-hover');
             color: #fff;
-            background-color: map_get($theme, 'warning');
-    
-            &:hover {
-              background-color: map_get($theme, 'warning-hover');
-              color: #fff;
-            }
-          
+          }
         }
   
         &:nth-child(4n+4) {
-          
+          color: #fff;
+          background-color: map_get($theme, 'danger');
+  
+          &:hover {
+            background-color: map_get($theme, 'danger-hover');
             color: #fff;
-            background-color: map_get($theme, 'danger');
-    
-            &:hover {
-              background-color: map_get($theme, 'danger-hover');
-              color: #fff;
-            }
-          
+          }
         }
       }
     }

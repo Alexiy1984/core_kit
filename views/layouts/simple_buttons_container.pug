@@ -9,7 +9,10 @@ div(class='container')
     div(class='col-12 col-md-6 col-lg-3 my-5')  
       button(type='button' class='button_small button_outline mb-3') Small button
       br
-      button(type='button' class='button_outline mb-3') Normal button
+      button(type='button' class='button_outline mb-3')
+        span Normal Button
+        svg
+          use(xlink:href="./assets/svg/base-sprite/base-sprite.svg#Inbox")
       br
       button(type='button' class='button_large button_outline mb-3') Large button
     div(class='col-12 col-md-6 col-lg-3 my-5')  
