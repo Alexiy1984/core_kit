@@ -21,9 +21,18 @@ div(class='container')
         button(type=button class='button selected') Text 1
         button(type=button class='button') Text 2
       div(class='btn-group_succes mr-5 mb-3' type='group')
-        button(type=button class='button') Text 3
-        button(type=button class='button') Text 4
-        button(type=button class='button selected') Text 5
+        button(type=button class='button')
+          span Text 3
+          svg
+            use(xlink:href="assets/svg/social-sprite/social-sprite.svg#Facebook")
+        button(type=button class='button')
+          span Text 4
+          svg
+            use(xlink:href="assets/svg/social-sprite/social-sprite.svg#Apple")
+        button(type=button class='button selected')
+          span Text 5
+          svg
+            use(xlink:href="assets/svg/social-sprite/social-sprite.svg#Instagram")
       div(class='btn-group_warning mr-5 mb-3' type='group')
         button(type=button class='button') Text 6
         button(type=button class='button selected') Text 7
@@ -44,22 +53,26 @@ div(class='container')
         button(type=button class='button') Text 4
         button(type=button class='button selected') Text 5
       div(class='btn-group_colorfull btn-group_large mr-5 mb-3' type='group')
-        button(type=button class='button') Text 6
-        button(type=button class='button') Text 7
-        button(type=button class='button') Text 8
-        button(type=button class='button') Text 9
+        button(type=button class='button') 
+          svg
+            use(xlink:href="assets/svg/social-sprite/social-sprite.svg#Twitter")
+          span Twitter
+        button(type=button class='button') 
+          svg
+            use(xlink:href="assets/svg/social-sprite/social-sprite.svg#Google")
+          span Google
     div(class='col-12 my-3')
       div(class='btn-group_colorfull btn-group_large mr-5 mb-3' type='group')
         button(type=button class='button')
           span Play
-            svg
-              use(xlink:href="assets/svg/base-sprite/base-sprite.svg#Play")
+          svg
+            use(xlink:href="assets/svg/base-sprite/base-sprite.svg#Play")
         button(type=button class='button') Text 2
         button(type=button class='button') Text 3
         button(type=button class='button')
           span Alert
-            svg
-              use(xlink:href="assets/svg/base-sprite/base-sprite.svg#Alert")
+          svg
+            use(xlink:href="assets/svg/base-sprite/base-sprite.svg#Alert")
         button(type=button class='button') Text 5
         button(type=button class='button') Text 6
         button(type=button class='button') Text 7

@@ -91,7 +91,7 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
     box-shadow: none;
   }
 
-  & > svg {
+  svg {
     width: 18px;
     height: 18px;
     position: relative;
@@ -101,12 +101,6 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
     & + span {
       margin-left: 11px;
     }
-
-    span {
-      & + svg {
-        margin-left: 11px;
-      }
-    }
     
     & * {
       fill: inherit;
@@ -114,6 +108,12 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
     }
   }
 
+  span {
+    & + svg {
+      margin-left: 11px;
+    }
+  }
+  
   &_small {
     @extend .button;
     height: 40px;
@@ -175,7 +175,7 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
     color: rgba($color: #000000, $alpha: 1.0);
     border-color: rgba($color: #000000, $alpha: 0.1);
 
-    & > svg {
+    svg {
       fill: rgba($color: #000000, $alpha: 1.0);
     }
 
@@ -183,7 +183,7 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
       color: rgba($color: #000000, $alpha: 0.6);
       border-color: rgba($color: #000000, $alpha: 0.35);
 
-      & > svg {
+      svg {
         fill: rgba($color: #000000, $alpha: 0.6);
       }
     }
@@ -195,7 +195,7 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
     color: rgba($color: #000000, $alpha: 0.3);
     border-color: rgba($color: #000000, $alpha: 0.1);
 
-    & > svg {
+    svg {
       fill: rgba($color: #000000, $alpha: 0.3);
     }
 
@@ -239,6 +239,24 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
 }
 
 .btn-group {
+  .button {
+    svg {
+      width: 18px;
+      height: 18px;
+      margin-bottom: 2px;
+
+      & + span {
+        margin-left: 11px;
+      }
+    }
+
+    span {
+      & + svg {
+        margin-left: 11px;
+      }
+    }
+  }
+
   &_small {
     .button {
       @extend .button_outline;
@@ -333,7 +351,7 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
         color: #fff;
         background-color: map_get($theme, 'warning');
 
-        & > svg {
+        svg {
           fill: #fff;
         }
             
@@ -355,7 +373,7 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
         color: #fff;
         background-color: map_get($theme, 'succes');
 
-        & > svg {
+        svg {
           fill: #fff;
         }
 
@@ -374,17 +392,13 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
       @extend .button_outline;
 
       &.selected {
-        & > svg {
-          fill: #fff;
+        svg {
+          fill: #fff !important; 
         }
 
         &:nth-child(4n+1) {
           color: #fff;
           background-color: map_get($theme, 'primary');
-
-          & > svg {
-            fill: #fff;
-          }
   
           &:hover {
             background-color: map_get($theme, 'primary-hover');
@@ -413,13 +427,7 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
         }
   
         &:nth-child(4n+4) {
-          color: #fff;
-          background-color: map_get($theme, 'danger');
-  
-          &:hover {
-            background-color: map_get($theme, 'danger-hover');
-            color: #fff;
-          }
+          @extend %danger_button_colors;
         }
       }
     }

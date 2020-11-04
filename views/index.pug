@@ -3,15 +3,29 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Index
+    //- Common styles
     link(rel="stylesheet", href="stylesheets/index.css")
+    link(rel="stylesheet", href="stylesheets/service-styles.css")
+    //- Components styles
     link(rel="stylesheet", href="stylesheets/button.css")
     link(rel="stylesheet", href="stylesheets/input-group.css")
     link(rel="stylesheet", href="stylesheets/form-control.css")
-    link(rel="stylesheet", href="stylesheets/service-styles.css")
+    link(rel="stylesheet", href="stylesheets/breadcrumbs.css")
+
     script(src="javascripts/jquery.js")
     script
       include index.js
   body
+    .container
+      .row
+        .col-12.mt-5
+          ul.breadcrumbs
+            each breadcrumb in mp_button_breadcrumbs
+              - var link = breadcrumb.link 
+              - var name = breadcrumb.name 
+              - var active = breadcrumb.active 
+              - var icon = breadcrumb.icon 
+              include components/breadcrumbs/breadcrumbs__item
     include layouts/simple_buttons_container
     include layouts/combined_buttons_container
     include layouts/inputs_container

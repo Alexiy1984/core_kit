@@ -1,0 +1,12 @@
+if active
+  li.active
+    a(href= link)
+      span= name
+    svg
+      use(xlink:href="../../assets/svg/navigation-sprite/navigation-sprite.svg#chevron small right")
+else 
+  li 
+    a(href= link)
+      span= name
+    svg
+      use(xlink:href="../../assets/svg/navigation-sprite/navigation-sprite.svg#chevron small right")

@@ -1,0 +1,85 @@
+@import 'variables';
+
+$theme: $main_theme;
+
+.breadcrumbs {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  margin: 0;
+
+  li {
+    position: relative;
+    font-size: 18px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: map_get($theme, 'grey-dark_3');
+    }
+
+    a {
+      text-decoration: none;
+      color: map_get($theme, 'grey-dark_3');
+
+      svg {
+        margin-right: 10px;
+      }
+
+      span {
+        font-size: 18px;
+        line-height: 20px;
+      }
+
+      &:hover {
+        color: map_get($theme, 'grey-dark_4');
+
+        svg {
+          fill: map_get($theme, 'grey-dark_4');
+        }
+      }
+    }
+
+    &.active {
+      a {
+        color: map_get($theme, 'grey-dark_6');
+        pointer-events: none;
+
+        svg {
+          fill: map_get($theme, 'grey-dark_6');
+        }
+      }
+    }
+
+    &::after {
+      position: relative;
+      content: "\002F";
+      color: map_get($theme, 'grey-dark_3');
+      right: 0;
+      margin: 0 12px;
+    }
+
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &_arrow {
+    @extend .breadcrumbs;
+
+    li {
+      &::after {
+        display: none;
+      }
+
+      & > svg {
+        margin: 0 12px;
+      }
+    }
+  }
+}

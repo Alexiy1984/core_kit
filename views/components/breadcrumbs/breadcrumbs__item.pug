@@ -1,0 +1,18 @@
+if active
+  li.active
+    if icon
+      a(href= link)
+        svg 
+          use(xlink:href= icon)
+        span= name
+    else 
+      a(href= link)= name      
+else 
+  li 
+    if icon
+      a(href= link)
+        svg 
+          use(xlink:href= icon)
+        span= name
+    else 
+      a(href= link)= name

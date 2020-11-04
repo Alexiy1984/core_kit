@@ -51,7 +51,7 @@ function generateCSS(cb) {
 }
 
 function copyAssets(cb) {
-  del(['public/assets/**/*', '!public/assets']);
+  del(['public/assets/**', '!public/assets/svg']);
   src('./assets/**/*')
     .pipe(dest('public/assets'))
   cb();
