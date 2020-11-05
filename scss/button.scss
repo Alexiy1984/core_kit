@@ -1,72 +1,10 @@
 @import 'variables';
+@import 'mixins';
 @import "node_modules/bootstrap/scss/buttons";
 @import "node_modules/bootstrap/scss/button-group";
 @import "node_modules/bootstrap/scss/input-group";
 
 $theme: $main_theme;
-
-%primary_button_colors {
-  background-color: map_get($theme, 'primary');
-  color: #fff;
-  border-color: map_get($theme, 'primary');
-
-  &:visited {
-    background-color: map_get($theme, 'primary');
-    color: #fff;
-    border-color: map_get($theme, 'primary');
-  }
-
-  &:hover {
-    background-color: map_get($theme, 'primary-hover');
-    color: #fff;
-    border-color:map_get($theme, 'primary-hover');
-  }
-
-  &:active {
-    background-color: map_get($theme, 'primary-active');
-    color: #fff;
-    border-color:map_get($theme, 'primary-active');
-  }
-}
-
-@mixin button_colors($normal_colors, $hover_colors, $active_colors: $hover_colors) {
-  @include set_colors($normal_colors);
-
-  &:hover {
-    @include set_colors($hover_colors);
-  }
-
-  &:active {
-    @include set_colors($active_colors);
-  }
-}
-
-@mixin set_colors($colorset) {
-  @if type-of($colorset) == list {
-    color: nth($colorset, 1);
-    background-color: nth($colorset, 2);
-    @if (length($colorset) > 2) {
-      border-color: nth($colorset, 3);
-    }
-    @else {
-      border-color: nth($colorset, 2);
-
-      & > svg {
-        fill: nth($colorset, 1);
-      }
-    } 
-    @if (length($colorset) > 3) {
-      & > svg {
-        fill: nth($colorset, 4);
-      }
-    }
-    @else {
-      & > svg {
-        fill: nth($colorset, 1);
-      }
-    }
-  }
-}
 
 // For set button state colors
 
@@ -80,13 +18,39 @@ $theme: $main_theme;
 
 // and include mixin
 
+// @include button_colors(<normal_colorset>, <hover_colorset, [<active_colorset>], [<visited_colorset>]);
+
+// Examlpe
+
 // @include button_colors($button_normal_colorset, $button_hover_colorset, $button_active_colorset);
 
+$primary_button_normal_colorset : #fff, map_get($theme, 'primary'), map_get($theme, 'primary');
+$primary_button_hover_colorset : #fff, map_get($theme, 'primary-hover'), rgba(0, 0, 0, 0);
+$primary_button_active_colorset : #fff, map_get($theme, 'primary-active'), map_get($theme, 'primary-active');
+// ---
 $danger_button_normal_colorset : #fff, map_get($theme, 'danger'), map_get($theme, 'danger');
 $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0, 0, 0);
+// ---
+$warning_button_normal_colorset : #fff, map_get($theme, 'warning'), map_get($theme, 'warning');
+$warning_button_hover_colorset : #fff, map_get($theme, 'warning-hover'), rgba(0, 0, 0, 0);
+// ---
+$succes_button_normal_colorset : #fff, map_get($theme, 'succes'), map_get($theme, 'succes');
+$succes_button_hover_colorset : #fff, map_get($theme, 'succes-hover'), rgba(0, 0, 0, 0);
+
+%primary_button_colors {
+  @include button_colors($primary_button_normal_colorset, $primary_button_hover_colorset, $primary_button_active_colorset);
+}
 
 %danger_button_colors {
   @include button_colors($danger_button_normal_colorset, $danger_button_hover_colorset);
+}
+
+%warning_button_colors {
+  @include button_colors($warning_button_normal_colorset, $warning_button_hover_colorset);
+}
+
+%succes_button_colors {
+  @include button_colors($succes_button_normal_colorset, $succes_button_hover_colorset);
 }
 
 .button {
@@ -226,24 +190,12 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
 
   &_succes {
     @extend .button;
-    color: #fff;
-    background-color: map_get($theme, 'succes');
-
-    &:hover {
-      background-color: map_get($theme, 'succes-hover');
-      color: #fff;
-    }
+    @extend %succes_button_colors;
   }
 
   &_warning {
     @extend .button;
-    color: #fff;
-    background-color: map_get($theme, 'warning');
-
-    &:hover {
-      background-color: map_get($theme, 'warning-hover');
-      color: #fff;
-    }
+    @extend %warning_button_colors;
   }
 
   &_for-input {
@@ -254,6 +206,8 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
 
 .btn-group {
   .button {
+    border-width: 1px;
+
     svg {
       width: 18px;
       height: 18px;
@@ -274,6 +228,7 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
   &_small {
     .button {
       @extend .button_outline;
+      border-width: 1px;
       height: 40px;
       font-size: 16px;
       line-height: 28px;
@@ -303,6 +258,7 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
      
     .button {
       @extend .button_outline;
+      border-width: 1px;
       height: 60px;
       line-height: 48px;
       font-size: 20px;
@@ -332,13 +288,10 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
 
     .button {
       @extend .button_outline;
+      border-width: 1px;
 
       &.selected {
         @extend %primary_button_colors;
-
-        & > svg {
-          fill: #fff;
-        }
       }
     }
   }
@@ -348,6 +301,7 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
 
     .button {
       @extend .button_outline;
+      border-width: 1px;
 
       &.selected {
         @extend %danger_button_colors;
@@ -360,19 +314,10 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
 
     .button {
       @extend .button_outline;
+      border-width: 1px;
 
       &.selected {
-        color: #fff;
-        background-color: map_get($theme, 'warning');
-
-        svg {
-          fill: #fff;
-        }
-            
-        &:hover {
-          background-color: map_get($theme, 'warning-hover');
-          color: #fff;
-        }
+        @extend %warning_button_colors;
       }
     }
   }
@@ -384,17 +329,7 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
       @extend .button_outline;
 
       &.selected {
-        color: #fff;
-        background-color: map_get($theme, 'succes');
-
-        svg {
-          fill: #fff;
-        }
-
-        &:hover {
-          background-color: map_get($theme, 'succes-hover');
-          color: #fff;
-        }
+        @extend %succes_button_colors;
       }
     }
   }
@@ -404,6 +339,7 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
 
     .button {
       @extend .button_outline;
+      border-width: 1px;
 
       &.selected {
         svg {
@@ -411,33 +347,15 @@ $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0
         }
 
         &:nth-child(4n+1) {
-          color: #fff;
-          background-color: map_get($theme, 'primary');
-  
-          &:hover {
-            background-color: map_get($theme, 'primary-hover');
-            color: #fff;
-          }
+          @extend %primary_button_colors;
         }
   
         &:nth-child(4n+2) {      
-          color: #fff;
-          background-color: map_get($theme, 'succes');
-  
-          &:hover {
-            background-color: map_get($theme, 'succes-hover');
-            color: #fff;
-          }
+          @extend %succes_button_colors;
         }
   
         &:nth-child(4n+3) {
-          color: #fff;
-          background-color: map_get($theme, 'warning');
-  
-          &:hover {
-            background-color: map_get($theme, 'warning-hover');
-            color: #fff;
-          }
+          @extend %warning_button_colors;
         }
   
         &:nth-child(4n+4) {

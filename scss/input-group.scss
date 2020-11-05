@@ -1,8 +1,44 @@
 @import 'variables';
+@import 'mixins';
 @import 'node_modules/bootstrap/scss/forms';
 @import 'node_modules/bootstrap/scss/input-group';
 
 $theme: $main_theme;
+
+$info_button_normal_colorset : #fff, map_get($theme, 'info_input_border_color'), map_get($theme, 'info_input_border_color');
+$info_button_hover_colorset : #fff, rgba(map_get($theme, 'info_input_border_color'), 0.7), rgba(0, 0, 0, 0);
+$success_button_normal_colorset : #fff, map_get($theme, 'success_input_border_color'), map_get($theme, 'success_input_border_color');
+$success_button_hover_colorset : #fff, rgba(map_get($theme, 'success_input_border_color'), 0.7), rgba(0, 0, 0, 0);
+$warning_button_normal_colorset : #fff, map_get($theme, 'warning_input_border_color'), map_get($theme, 'warning_input_border_color');
+$warning_button_hover_colorset : #fff, rgba(map_get($theme, 'warning_input_border_color'), 0.7), rgba(0, 0, 0, 0);
+$danger_button_normal_colorset : #fff, map_get($theme, 'danger_input_border_color'), map_get($theme, 'danger_input_border_color');
+$danger_button_hover_colorset : #fff, rgba(map_get($theme, 'danger_input_border_color'), 0.7), rgba(0, 0, 0, 0);
+
+@mixin input_border_colors($color) {
+  border-color: $color;
+
+  & > * {
+    border-color: $color;
+  }
+
+  .input-group-text {
+    border-color: $color;
+  }
+
+  svg {
+    fill: $color;
+  }
+
+  .form-control {
+    border-color: $color;
+
+    &:focus,
+    &.focus {
+      border-color: $color;
+      box-shadow: rgba($color, 0.25) 0px 0px 0px 0.2rem;
+    }
+  }
+}
 
 @mixin text-size($fz) {
   .form-control {
@@ -13,8 +49,8 @@ $theme: $main_theme;
     font-size: $fz;
 
     svg {
-      width: $fz;
-      height: auto;
+      width: $fz/1px+2#{'px'};
+      height: $fz/1px+2#{'px'};
     }
   }
 
@@ -36,8 +72,11 @@ $theme: $main_theme;
     @include text-size(18px);
 
     svg {
+      fill: map_get($theme, 'grey-dark_3');
+
       path {
-        fill: map_get($theme, 'grey-dark_3');
+        fill: inherit;
+        stroke: inherit;
       }
     }
 
@@ -52,10 +91,30 @@ $theme: $main_theme;
 
     .button {
       height: 100%;
+      border-radius: 10px;
+      border-width: 1px;
+      border-color: map_get($theme, 'grey-dark_3');
+      border-style: solid;
+      outline: none;
+      padding: 0.375rem 0.75rem;
 
       &_large,
       &_small {
         height: 100%;
+      }
+    }
+
+    .input-group-prepend {
+      .button {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    .input-group-append {
+      .button {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
       }
     }
 
@@ -70,124 +129,72 @@ $theme: $main_theme;
     }
 
     &_small {
+      @extend .input-group;
       height: 40px;
       
       @include text-size(16px);
     }
 
     &_large  {
+      @extend .input-group;
       height: 60px;
     
       @include text-size(20px);
     }
 
-    &_info {
-      @extend .input-group;
-      border-color: rgba(45, 116, 255, 1);
-  
-      & > * {
-        border-color: rgba(45, 116, 255, 1);
-      }
-
-      .input-group-text {
-        border-color: rgba(45, 116, 255, 1);
-      }
-
-      svg {
-        path {
-          fill: rgba(45, 116, 255, 1);
-        }
-      }
-
-      .form-control {
-        border-color: rgba(45, 116, 255, 1);
-      }  
+    %info_button_colors {
+      @include button_colors($info_button_normal_colorset, $info_button_hover_colorset);
+    }
+    
+    %success_button_colors {
+      @include button_colors($success_button_normal_colorset, $success_button_hover_colorset);
+    }
+    
+    %warning_button_colors {
+      @include button_colors($warning_button_normal_colorset, $warning_button_hover_colorset);
+    }
+    
+    %danger_button_colors {
+      @include button_colors($danger_button_normal_colorset, $danger_button_hover_colorset);
     }
 
-    &_succes {
+    &_info {
       @extend .input-group;
-      border-color: rgba(1, 160, 1, 1);
-  
-      & > * {
-        border-color: rgba(1, 160, 1, 1);
+      @include input_border_colors(map_get($theme, 'info_input_border_color'));
+
+      .button {
+        @extend .button;  
+        @extend %info_button_colors;
       }
+    }
 
-      .input-group-text {
-        border-color: rgba(1, 160, 1, 1);
-      }
+    &_success {
+      @extend .input-group;
+      @include input_border_colors(map_get($theme, 'success_input_border_color'));
 
-      svg {
-        path {
-          fill: rgba(1, 160, 1, 1);
-        }
-      }
-
-      .form-control {
-        border-color: rgba(1, 160, 1, 1);
-
-        &:focus,
-        &.focus {
-          border-color: rgba(1, 160, 1, 1);
-          box-shadow: rgba(1, 160, 1, 0.25) 0px 0px 0px 0.2rem;
-        }
+      .button {
+        @extend .button;  
+        @extend %success_button_colors;
       }
     }
 
     &_warning {
       @extend .input-group;
-      border-color: rgba(254, 183, 47, 1);
-  
-      & > * {
-        border-color: rgba(254, 183, 47, 1);
-      }
+      @include input_border_colors(map_get($theme, 'warning_input_border_color'));
 
-      .input-group-text {
-        border-color: rgba(254, 183, 47, 1);
-      }
-
-      svg {
-        path {
-          fill: rgba(254, 183, 47, 1);
-        }
-      }
-
-      .form-control {
-        border-color: rgba(254, 183, 47, 1);
-
-        &:focus,
-        &.focus {
-          border-color: rgba(254, 183, 47, 1);
-          box-shadow: rgba(254, 183, 47, 0.25) 0px 0px 0px 0.2rem;
-        }
+      .button {
+        @extend .button;  
+        @extend %warning_button_colors;
       }
     }
 
     &_danger {
       @extend .input-group;
-      border-color: rgba(250, 74, 106, 1);
-  
-      & * > {
-        border-color: rgba(250, 74, 106, 1);
-      }
+      @include input_border_colors(map_get($theme, 'danger_input_border_color'));
 
-      .input-group-text {
-        border-color: rgba(250, 74, 106, 1);
-      }
-
-      svg {
-        path {
-          fill: rgba(250, 74, 106, 1);
-        }
-      }
-
-      .form-control {
-        border-color: rgba(250, 74, 106, 1);
-
-        &:focus,
-        &.focus {
-          border-color: rgba(250, 74, 106, 1);
-          box-shadow: rgba(250, 74, 106, 0.25) 0px 0px 0px 0.2rem;
-        }
+      .button {
+        @extend .button;  
+        @extend %danger_button_colors;
       }
     }
 
@@ -197,6 +204,10 @@ $theme: $main_theme;
       .form-control {
         border-left-width: 0;
         border-right-width: 0;
+      }
+
+      .input-group-text {
+        background: none;
       }
 
       & > * {
@@ -217,6 +228,44 @@ $theme: $main_theme;
           & > * {
             border-left-width: 0;
           }
+        }
+      }
+    }
+
+    &_lowborder {
+      @extend .input-group_noborder;
+
+      .input-group-prepend {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          display: block;
+          right: 1px;
+          top: 50%;
+          transform: translateY(-50%);
+          content: '';
+          width: 1px;
+          height: calc(100% - 20px);
+          background-color: map_get($theme, 'grey-dark_2');
+          z-index: 10;
+        }
+      }
+
+      .input-group-append {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          display: block;
+          left: 1px;
+          top: 50%;
+          transform: translateY(-50%);
+          content: '';
+          width: 1px;
+          height: calc(100% - 20px);
+          background-color: map_get($theme, 'grey-dark_2');
+          z-index: 10;
         }
       }
     }

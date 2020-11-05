@@ -28,5 +28,15 @@ html(lang="en")
               include components/breadcrumbs/breadcrumbs__item
     include layouts/simple_buttons_container
     include layouts/combined_buttons_container
+    .container
+      .row
+        .col-12.mt-3.mb-5
+          ul.breadcrumbs
+            each breadcrumb in mp_input_group_breadcrumbs
+              - var link = breadcrumb.link 
+              - var name = breadcrumb.name 
+              - var active = breadcrumb.active 
+              - var icon = breadcrumb.icon 
+              include components/breadcrumbs/breadcrumbs__item
     include layouts/inputs_container
     include components/brand-colors-palette

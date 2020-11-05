@@ -1,0 +1,46 @@
+// Mixin for set button state colors ->
+
+@mixin button_colors($normal_colors, $hover_colors, $active_colors: $hover_colors, $visited_colors: $normal_colors) {
+  @include set_colors($normal_colors);
+
+  &:visited {
+    @include set_colors($visited_colors);
+  }
+
+  &:hover {
+    @include set_colors($hover_colors);
+  }
+
+  &:active {
+    @include set_colors($active_colors);
+  }
+}
+
+@mixin set_colors($colorset) {
+  @if type-of($colorset) == list {
+    color: nth($colorset, 1);
+    background-color: nth($colorset, 2);
+    @if (length($colorset) > 2) {
+      border-color: nth($colorset, 3);
+    }
+    @else {
+      border-color: nth($colorset, 2);
+
+      & > svg {
+        fill: nth($colorset, 1);
+      }
+    } 
+    @if (length($colorset) > 3) {
+      & > svg {
+        fill: nth($colorset, 4);
+      }
+    }
+    @else {
+      & > svg {
+        fill: nth($colorset, 1);
+      }
+    }
+  }
+}
+
+// Mixin for set button state colors <-

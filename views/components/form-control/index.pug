@@ -4,12 +4,21 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Index
     link(rel="stylesheet", href="../../stylesheets/index.css")
-    link(rel="stylesheet", href="../../stylesheets/form-control.css")
     link(rel="stylesheet", href="../../stylesheets/breadcrumbs.css")
+
+    link(rel="stylesheet", href="../../stylesheets/form-control.css")
     script(src="../../javascripts/jquery.js")
   body
     .container
       .row.mt-5
+        .col-12.mb-5
+            ul.breadcrumbs
+              each breadcrumb in sp_fc_breadcrumbs
+                - var link = breadcrumb.link 
+                - var name = breadcrumb.name 
+                - var active = breadcrumb.active 
+                - var icon = breadcrumb.icon 
+                include ../breadcrumbs/breadcrumbs__item
         .col-4.mb-3
           include form-control_small
         .col-4.mb-3
