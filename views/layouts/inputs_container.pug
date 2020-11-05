@@ -66,11 +66,13 @@ div.container
           input(class='form-control' type='text' name='text-1')  
     dic(class='col-12 mb-3')
       ul.breadcrumbs_arrow
-            each breadcrumb in mp_form_control_breadcrumbs
+            each breadcrumb, index in mp_form_control_breadcrumbs
               - var link = breadcrumb.link 
               - var name = breadcrumb.name 
-              - var active = breadcrumb.active 
-              include ../components/breadcrumbs/_arrow/breadcrumbs__item                           
+              - var active = breadcrumb.active
+              - var i_index = index 
+              - var length = mp_form_control_breadcrumbs.length
+              include ../components/breadcrumbs/breadcrumbs_arrow/breadcrumbs__item                           
     div(class='col-12 col-md-3 mb-3')
       div(class='form-group')
         input(class='form-control' type='text' placeholder='Normal text')
