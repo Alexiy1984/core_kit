@@ -55,7 +55,7 @@
       "icon": "../../assets/svg/base-sprite/base-sprite.svg#Box"
     },
     {
-      "name": "Button",
+      "name": "Breadcrumbs",
       "link": "components/breadcrumbs",
       "active": true,
       "icon": "../../assets/svg/base-sprite/base-sprite.svg#Box"

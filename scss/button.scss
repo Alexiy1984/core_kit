@@ -68,6 +68,20 @@ $theme: $main_theme;
   }
 }
 
+// For set button state colors
+
+// $<colorset_name>: <color>, <background-color>, [<border-color>], [<svg fill color>]
+
+// Examlpe
+
+// $button_normal_colorset : #fff, map_get($theme, 'grey-dark_4'), map_get($theme, 'grey-dark_4');
+// $button_hover_colorset : #fff, map_get($theme, 'grey-dark_3'), rgba(0, 0, 0, 0);
+// $button_active_colorset : #fff, map_get($theme, 'grey-dark_5'), rgba(0, 0, 0, 0);
+
+// and include mixin
+
+// @include button_colors($button_normal_colorset, $button_hover_colorset, $button_active_colorset);
+
 $danger_button_normal_colorset : #fff, map_get($theme, 'danger'), map_get($theme, 'danger');
 $danger_button_hover_colorset : #fff, map_get($theme, 'danger-hover'), rgba(0, 0, 0, 0);
 

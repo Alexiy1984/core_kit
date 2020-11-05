@@ -1,32 +1,9 @@
-if active
-  li.active
+li(class=active ? "active" : "")
+  a(href= link)
     if icon
       svg 
-          use(xlink:href= icon)
-      a(href= link)
-        span= name
-      if i_index < length - 1  
-        svg
-          use(xlink:href="../../assets/svg/navigation-sprite/navigation-sprite.svg#chevron small right")
-    else
-      a(href= link)
-        span= name
-      if i_index < length - 1  
-        svg
-          use(xlink:href="../../assets/svg/navigation-sprite/navigation-sprite.svg#chevron small right")       
-else 
-  li 
-    if icon
-      svg 
-          use(xlink:href= icon)
-      a(href= link)
-        span= name
-      if i_index < length - 1  
-        svg
-          use(xlink:href="../../assets/svg/navigation-sprite/navigation-sprite.svg#chevron small right")
-    else
-      a(href= link)
-        span= name
-      if i_index < length - 1  
-        svg
-          use(xlink:href="../../assets/svg/navigation-sprite/navigation-sprite.svg#chevron small right") 
+        use(xlink:href= icon)
+    span= name
+    if i_index < length - 1  
+      svg
+        use(xlink:href="../../assets/svg/navigation-sprite/navigation-sprite.svg#chevron small right")
