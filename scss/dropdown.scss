@@ -1,0 +1,64 @@
+@import "variables";
+@import "node_modules/bootstrap/scss/dropdown";
+
+$theme: $main_theme;
+
+.dropdown {
+  &-menu {
+    border-radius: map_get($theme, 'main-border-radius');
+    padding: 4px;
+  }
+
+  &-item {
+    border-radius: map_get($theme, 'small-border-radius');
+    height: 40px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    input[type="checkbox"] {
+      width: 18.33px;
+      height: 18.33px;
+    }
+
+    input[type="radio"] {
+      width: 22px;
+      height: 22px;
+    }
+
+    span + svg,
+    span + input[type="checkbox"],
+    span + input[type="radio"] {
+      margin-left: 9px;
+    }
+
+    input[type="radio"] + span,
+    input[type="checkbox"] + span,
+    svg + span {
+      margin-left: 9px;
+    }
+
+    input[type="checkbox"]:checked + span {
+      color: map_get($theme, 'accent_1_4')
+    }
+
+    input[type="checkbox"]:checked ~ span {
+      color: map_get($theme, 'accent_1_4')
+    }
+  }
+
+  &_small {
+    @extend .dropdown;
+    height: 30px;
+    padding: 6px 14px;
+    font-size: 16px;
+    line-height: 18px;
+  }
+}

@@ -73,9 +73,15 @@ function copyReadme(cb) {
   cb();
 }
 
-function buldJQuery(cb) {
-  src('node_modules/jquery/dist/jquery.js')
-    .pipe(babel()) 
+function buldCoreJs(cb) {
+  del(['public/javascripts/**/*', '!public/javascripts/']);
+  src([
+    'node_modules/jquery/dist/jquery.min.js',
+    'node_modules/jquery/dist/jquery.min.map',
+    'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+    'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map',
+  ])
+    // .pipe(babel()) 
     .pipe(dest('public/javascripts'))
     .pipe(sync.stream());
   cb();
@@ -84,7 +90,7 @@ function buldJQuery(cb) {
 function browserSync(cb) {
   buildHTML(cb); 
   generateCSS(cb);
-  buldJQuery(cb);
+  buldCoreJs(cb);
   copyAssets(cb);
   copyReadme(cb);
 
@@ -102,8 +108,8 @@ function browserSync(cb) {
   watch('./public/**.html').on('change', sync.reload);
 }
 
-exports.default = parallel(buildHTML, copyReadme, generateCSS, buldJQuery, copyAssets);
+exports.default = parallel(buildHTML, copyReadme, generateCSS, buldCoreJs, copyAssets);
 exports.html = buildHTML;
 exports.sync = browserSync;
 exports.css = generateCSS;
-exports.jquery = buldJQuery;
+exports.corejs = buldCoreJs;

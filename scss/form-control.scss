@@ -8,7 +8,7 @@ $theme: $main_theme;
   font-size: 18px;
   line-height: 20px;
   height: 50px;
-  border-radius: 10px;
+  border-radius: map_get($theme, 'main-border-radius');
 
   &::placeholder {
     color: map_get($theme, 'grey-dark_3');

@@ -1,0 +1,36 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Index
+    link(rel="stylesheet", href="../../stylesheets/index.css")
+    link(rel="stylesheet", href="../../stylesheets/breadcrumbs.css")
+    link(rel="stylesheet", href="../../stylesheets/button.css")
+
+    link(rel="stylesheet", href="../../stylesheets/dropdown.css")
+    script(src="../../javascripts/jquery.min.js")
+    script(src="../../javascripts/bootstrap.bundle.min.js")
+  body
+  body
+    .container
+      .row.mt-5
+        .col-12.mb-5
+            ul.breadcrumbs
+              each breadcrumb in sp_dropdown_breadcrumbs
+                - var link = breadcrumb.link 
+                - var name = breadcrumb.name 
+                - var active = breadcrumb.active 
+                - var icon = breadcrumb.icon 
+                include ../breadcrumbs/breadcrumbs__item
+        .col-12.col-md-6.col-lg-3.mb-4
+          include dropdown
+        .col-12.col-md-6.col-lg-3.mb-4
+          include dropdown_with-right-icon  
+        .col-12.col-md-6.col-lg-3.mb-4
+          include dropdown_with-left-icon 
+        .col-12.col-md-6.col-lg-3.mb-4
+          include dropdown_with-icon-both
+        .col-12.col-md-6.col-lg-3.mb-4
+          include dropdown_with-checkbox
+        .col-12.col-md-6.col-lg-3.mb-4
+          include dropdown_with-radio    

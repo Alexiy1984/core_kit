@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import "variables";
+@import "mixins";
 @import "node_modules/bootstrap/scss/buttons";
 @import "node_modules/bootstrap/scss/button-group";
 @import "node_modules/bootstrap/scss/input-group";
@@ -55,7 +55,7 @@ $succes_button_hover_colorset : #fff, map_get($theme, 'succes-hover'), rgba(0, 0
 
 .button {
   @extend .btn;
-  border-radius: 10px;
+  border-radius: map_get($theme, 'main-border-radius');
   font-size: 18px;
   line-height: 38px;
   font-weight: 500;

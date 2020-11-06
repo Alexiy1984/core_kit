@@ -67,7 +67,7 @@ $danger_button_hover_colorset : #fff, rgba(map_get($theme, 'danger_input_border_
 .input {
   &-group {
     height: 50px;
-    border-radius: 10px;
+    border-radius: map_get($theme, 'main-border-radius');
 
     @include text-size(18px);
 
@@ -91,7 +91,7 @@ $danger_button_hover_colorset : #fff, rgba(map_get($theme, 'danger_input_border_
 
     .button {
       height: 100%;
-      border-radius: 10px;
+      border-radius: map_get($theme, 'main-border-radius');
       border-width: 1px;
       border-color: map_get($theme, 'grey-dark_3');
       border-style: solid;
