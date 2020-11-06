@@ -225,6 +225,7 @@ $succes_button_hover_colorset : #fff, map_get($theme, 'succes-hover'), rgba(0, 0
     }
   }
 
+  .dropdown_small,
   &_small {
     .button {
       @extend .button_outline;
@@ -253,6 +254,7 @@ $succes_button_hover_colorset : #fff, map_get($theme, 'succes-hover'), rgba(0, 0
     }
   }
 
+  .dropdown_large,
   &_large {
     @extend .btn-group;
      
