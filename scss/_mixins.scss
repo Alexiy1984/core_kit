@@ -16,6 +16,44 @@
   }
 }
 
+@mixin button_colors_new($colorset) {
+  $_temp_normal: #000, #fff, rgba(0, 0, 0, 0);
+  $_temp_hover: #000, #fff, rgba(0, 0, 0, 0);
+
+  @if (map-has-key($colorset , 'normal_colors')) {
+    @include set_colors(map-get($colorset , 'normal_colors'));
+    $_temp_normal: map-get($colorset , 'normal_colors');
+  } @else {
+    @include set_colors($_temp_normal);
+  } 
+
+  &:hover {
+    @if (map-has-key($colorset , 'hover_colors')) {
+      @include set_colors(map-get($colorset , 'hover_colors'));
+      $_temp_hover: map-get($colorset , 'hover_colors');
+    } @else {
+      @include set_colors($_temp_normal);
+      $_temp_hover: $_temp_normal;
+    }
+  }
+
+  &:visited {
+    @if (map-has-key($colorset , 'visited_colors')) {
+      @include set_colors(map-get($colorset , 'visited_colors'));
+    } @else {
+      @include set_colors($_temp_normal);
+    }
+  }
+
+  &:active {
+    @if (map-has-key($colorset , 'active_colors')) {
+      @include set_colors(map-get($colorset , 'active_colors'));
+    } @else {
+      @include set_colors($_temp_hover);
+    }
+  }
+}
+
 @mixin set_colors($colorset) {
   @if type-of($colorset) == list {
     color: nth($colorset, 1);

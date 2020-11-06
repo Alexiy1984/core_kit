@@ -10,8 +10,8 @@ $main_theme: (
   "primary-active": rgb(17, 86, 219),
   "danger": rgba(255, 78 ,78 ,1),
   "danger-hover": rgba(255, 78 ,78 ,0.7),
-  "succes": rgba(47, 254, 142 ,1),
-  "succes-hover": rgba(47, 254, 142 ,0.7),
+  "success": rgba(47, 254, 142 ,1),
+  "success-hover": rgba(47, 254, 142 ,0.7),
   "warning": rgba(254, 183, 47, 1),
   "warning-hover": rgba(254, 183, 47, 0.7),
   "info_input_border_color": rgba(45, 116, 255, 1),
@@ -37,3 +37,40 @@ $main_theme: (
   "main-border-radius": 10px,
   "small-border-radius": 10px,
 );
+
+//Button colors sets ->
+
+$theme: $main_theme;
+
+$outline_button_colorset : (
+  "normal_colors": (map_get($theme, 'grey-dark_6'), #fff, map_get($theme, 'grey-dark_2')), 
+  "hover_colors": (map_get($theme, 'grey-dark_4'), #fff, map_get($theme, 'grey-dark_3')),
+);
+
+$primary_button_colorset : (
+  "normal_colors": (#fff, map_get($theme, 'primary'), map_get($theme, 'primary')), 
+  "hover_colors": (#fff, map_get($theme, 'primary-hover'), rgba(0, 0, 0, 0)),
+);
+
+$primary_button_colorset : (
+  "normal_colors": (#fff, map_get($theme, 'primary'), map_get($theme, 'primary')), 
+  "hover_colors": (#fff, map_get($theme, 'primary-hover'), rgba(0, 0, 0, 0)),
+  "active_colors": (#fff, map_get($theme, 'primary-active'), map_get($theme, 'primary-active')),
+);
+
+$success_button_colorset : (
+  "normal_colors": ( #fff, map_get($theme, 'success'), map_get($theme, 'success')), 
+  "hover_colors": (#fff, map_get($theme, 'success-hover'), rgba(0, 0, 0, 0)),
+);
+
+$warning_button_colorset : (
+  "normal_colors": ( #fff, map_get($theme, 'warning'), map_get($theme, 'warning')), 
+  "hover_colors": (#fff, map_get($theme, 'warning-hover'), rgba(0, 0, 0, 0)),
+);
+
+$danger_button_colorset : (
+  "normal_colors": ( #fff, map_get($theme, 'danger'), map_get($theme, 'danger')), 
+  "hover_colors": (#fff, map_get($theme, 'danger-hover'), rgba(0, 0, 0, 0)),
+);
+
+//Button colors sets <-
