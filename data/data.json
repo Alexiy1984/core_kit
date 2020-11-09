@@ -129,5 +129,24 @@
       "active": true,
       "icon": "../../assets/svg/base-sprite/base-sprite.svg#Box"
     }
+  ],
+  "sp_dropdown_tabs": [
+    {
+      "name": "Main",
+      "link": "/",
+      "active": false
+    },
+    {
+      "name": "Components",
+      "link": "../readme.md",
+      "active": false,
+      "icon": "../../assets/svg/base-sprite/base-sprite.svg#Box"
+    },
+    {
+      "name": "Tabs",
+      "link": "components/tabs",
+      "active": true,
+      "icon": "../../assets/svg/base-sprite/base-sprite.svg#Box"
+    }
   ]
 }  

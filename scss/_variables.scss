@@ -37,7 +37,7 @@ $main_theme: (
   "accent_2_4": rgba(250, 74, 106, 1),
   "accent_2_5": rgba(227, 31, 67, 1),
   "main-border-radius": 10px,
-  "small-border-radius": 10px,
+  "small-border-radius": 5px,
 );
 
 //Button colors sets ->
@@ -91,31 +91,64 @@ $breakpoints: (
 $h1-font-sizes: (
   null: (38px, 42px, -2.5px),
   tablet: (54px, 60px, -3.5px),
-  madium: (72px, 80px, -4.5px),
+  medium: (72px, 80px, -4.5px),
 );
 
 $h2-font-sizes: (
   null: (32px, 40px, -1.8px),
   tablet: (46px, 50px, -3px),
-  madium: (60px, 65px, -2.5px),
+  medium: (60px, 65px, -2.5px),
 );
 
 $h3-font-sizes: (
   null: (26px, 30px, -0.9px),
   tablet: (34px, 38px, -1.5px),
-  madium: (48px, 54px, -1.6px),
+  medium: (48px, 54px, -1.6px),
 );
 
 $h4-font-sizes: (
   null: (24px, 28px, -0.8px),
-  medium: (32px, 36px, -1.2px),
-  tablet: (36px, 44px, -1.2px),
+  tablet: (32px, 36px, -1.2px),
+  medium: (36px, 44px, -1.2px),
 );
 
 $h5-font-sizes: (
   null: (22px, 26px, -0.55px),
-  medium: (24px, 28px, -0.8px),
-  tablet: (28px, 34px, -0.8px),
+  tablet: (24px, 28px, -0.8px),
+  medium: (28px, 34px, -0.8px),
+);
+
+$caption-1-font-sizes: (
+  null: (18px, 20px, -0.5px),
+  tablet: (20px, 24px, -0.6px),
+);
+
+$caption-2-font-sizes: (
+  null: (17px, 20px, -0.3px),
+  tablet: (18px, 20px, -0.3px),
+);
+
+$caption-3-font-sizes: (
+  null: (15px, 18px, -0.4px),
+  tablet: (16px, 18px, -0.5px),
+);
+
+$caption-4-font-sizes: (
+  null: (13px, 15px, -0.2px),
+);
+
+$body-large-font-sizes: (
+  null: (18px, 26px, -0.6px),
+  tablet: (21px, 30px, -0.8px),
+);
+
+$body-normal-font-sizes: (
+  null: (16px, 24px, -0.6px),
+  tablet: (17px, 25px, -0.7px),
+);
+
+$body-small-font-sizes: (
+  null: (15px, 23px, -0.6px),
 );
 
 // Text sizes <-

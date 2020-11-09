@@ -19,12 +19,11 @@ var prefixerOptions = {
   browserlist: ['last 3 versions']
 };
  
-function  buildHTML(cb) {
+function buildHTML(cb) {
   del([
-    'public/**',
     'public/components/**/*', 
-    '!public', 
     '!public/components', 
+    '!public/components/input-group', 
     '!public/stylesheets', 
     '!public/javascripts', 
     '!public/assets',
@@ -32,6 +31,7 @@ function  buildHTML(cb) {
   ]);
   src([ 
     'views/**/*.pug',
+    '!views/components/input-group',
     '!views/**/_*/',
     '!views/**/_*/**/*',
   ])
@@ -45,6 +45,27 @@ function  buildHTML(cb) {
     }))
     .pipe(dest('public/'))
     .pipe(sync.stream());
+  cb();
+}
+
+function buldInputsGroupCp(cb) {
+  del([
+    'public/components/input-group/**', 
+    '!public/components/input-group', 
+    '!public/components/input-group/*.md',
+  ]);
+  src([ 
+    'input-group/**/*.pug',
+  ])
+    .pipe(plumber())
+    .pipe(data(function(file) {
+      return JSON.parse(fs.readFileSync('./data/data.json'))
+    }))
+    .pipe(pug({
+      doctype: 'html',
+      pretty: true
+    }))
+    .pipe(dest('public/components/input-group'))
   cb();
 }
 
@@ -89,6 +110,7 @@ function buldCoreJs(cb) {
 
 function browserSync(cb) {
   buildHTML(cb); 
+  buldInputsGroupCp(cb);
   generateCSS(cb);
   buldCoreJs(cb);
   copyAssets(cb);
@@ -104,6 +126,7 @@ function browserSync(cb) {
   watch('./views/*.pug', buildHTML);
   watch('./views/**/*.md', copyReadme);
   watch('./views/**/*.pug', buildHTML);
+  watch('./input-group/**/*.pug', buldInputsGroupCp);
   watch('./scss', generateCSS);
   watch('./public/**.html').on('change', sync.reload);
 }
@@ -113,3 +136,4 @@ exports.html = buildHTML;
 exports.sync = browserSync;
 exports.css = generateCSS;
 exports.corejs = buldCoreJs;
+exports.buldinputgroup = buldInputsGroupCp;
