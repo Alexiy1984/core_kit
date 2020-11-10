@@ -6,5 +6,6 @@
 * [input-group](input-group/)
 * [dropdown](dropdown/)
 * [tabs](tabs/)
+* [pagination](pagination/)
 
 ### [Go to Main page](/)
