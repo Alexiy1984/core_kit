@@ -10,6 +10,15 @@ html(lang="en")
     script(src="../../javascripts/jquery.min.js")
   body
     .container
+      .row.my-5
+          .col-12.mb-3
+            ul.breadcrumbs
+              each breadcrumb in sp_pagination_breadcrumbs
+                - var link = breadcrumb.link 
+                - var name = breadcrumb.name 
+                - var active = breadcrumb.active 
+                - var icon = breadcrumb.icon 
+                include ../breadcrumbs/breadcrumbs__item
       .row.mt-5.mb-4
         include pagination
       .row.mb-4

@@ -80,6 +80,10 @@ $theme: $main_theme;
       }
     }
 
+    &.delimiter {
+      pointer-events: none;
+    }
+
     &.disabled {
       .page-link {
         background-color: map_get($theme, 'grey-dark_1');
