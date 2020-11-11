@@ -16,6 +16,16 @@ html(lang="en")
     script
       include index.js
   body
+    .container
+      .row
+        .col-12.mt-5
+          ul.breadcrumbs
+            each breadcrumb in mp_components_breadcrumbs
+              - var link = breadcrumb.link 
+              - var name = breadcrumb.name 
+              - var active = breadcrumb.active 
+              - var icon = breadcrumb.icon 
+              include components/breadcrumbs/breadcrumbs__item
     include layouts/typography_container
     .container
       .row
