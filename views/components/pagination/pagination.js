@@ -45,4 +45,24 @@ $(function() {
       }
     }    
   });
+
+  $('.pagination_short .page-item.control').on('click', function () {   
+    if ($(this).attr('data-direction') === 'next') {
+      var numbers = $('.counter').first().find('.page-link').text().split('/');
+
+      numbers[0]++;
+      if (numbers[0] <= numbers[1]) {
+        $('.counter').first().find('.page-link').text(numbers[0] +'/'+numbers[1]);
+      }
+    };
+
+    if ($(this).attr('data-direction') === 'prev') {
+      var numbers = $('.counter').first().find('.page-link').text().split('/');
+
+      numbers[0]--;
+      if (numbers[0] >= 1) {
+        $('.counter').first().find('.page-link').text(numbers[0] +'/'+numbers[1]);
+      }
+    };
+  });
 });

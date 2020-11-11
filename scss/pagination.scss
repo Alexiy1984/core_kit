@@ -19,6 +19,11 @@ $theme: $main_theme;
       color: map_get($theme, 'grey-dark_3');
       border-left-color: rgba(0, 0, 0, 0);
       border-right-color: rgba(0, 0, 0, 0);
+      user-select: none;
+
+      &:focus {
+        box-shadow: none;
+      }
 
       svg {
         height: 18px;
@@ -84,11 +89,30 @@ $theme: $main_theme;
       pointer-events: none;
     }
 
+    &.counter {
+      pointer-events: none;
+
+      .page-link {
+        color: map_get($theme, 'grey-dark_3');
+
+        &:hover,
+        &:active,
+        &:visited {
+          color: map_get($theme, 'grey-dark_3');
+          background-color: #fff;
+        }
+      }
+    }
+
     &.disabled {
       .page-link {
         background-color: map_get($theme, 'grey-dark_1');
         color: map_get($theme, 'grey-dark_2');
       }  
     }
+  }
+
+  &_short {
+    @extend .pagination;
   }
 }
