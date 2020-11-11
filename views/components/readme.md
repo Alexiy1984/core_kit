@@ -7,5 +7,6 @@
 * [dropdown](dropdown/)
 * [tabs](tabs/)
 * [pagination](pagination/)
+* [tag](tag/)
 
 ### [Go to Main page](/)

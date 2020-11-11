@@ -11,6 +11,7 @@ html(lang="en")
     link(rel="stylesheet", href="stylesheets/input-group.css")
     link(rel="stylesheet", href="stylesheets/form-control.css")
     link(rel="stylesheet", href="stylesheets/breadcrumbs.css")
+    link(rel="stylesheet", href="stylesheets/pagination.css")
 
     script(src="javascripts/jquery.min.js")
     script
@@ -18,7 +19,7 @@ html(lang="en")
   body
     .container
       .row
-        .col-12.mt-5
+        .col-12.my-5
           ul.breadcrumbs
             each breadcrumb in mp_components_breadcrumbs
               - var link = breadcrumb.link 
@@ -26,6 +27,7 @@ html(lang="en")
               - var active = breadcrumb.active 
               - var icon = breadcrumb.icon 
               include components/breadcrumbs/breadcrumbs__item
+    include layouts/pagination_container
     include layouts/typography_container
     .container
       .row

@@ -13,6 +13,7 @@ $theme: $main_theme;
     border-color: inherit;
 
     .page-link {
+      white-space: nowrap;
       height: 100%;
       font-size: 18px;
       padding: 15px 20px;
