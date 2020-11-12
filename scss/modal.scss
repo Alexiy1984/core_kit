@@ -1,0 +1,30 @@
+@import 'variables';
+
+@import "node_modules/bootstrap/scss/modal";
+
+$theme: $main_theme;
+
+.modal {
+  &-content {
+    padding: 15px 0;
+    border-radius: map_get($theme, 'main-border-radius');
+  }
+
+  &-header {
+    border-bottom: none;
+    padding: 0 16px;
+  }
+
+  &-body {
+    padding: 0 16px;
+  }
+
+  &-footer {
+    border-top: none;
+    padding: 0 16px;
+  }
+
+  &-close-button {
+    font-size: 18px;
+  }
+}

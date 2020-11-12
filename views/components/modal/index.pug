@@ -1,0 +1,18 @@
+extends ../_blank/index.pug
+
+block variables
+  - var breadcrumbs_name = sp_button_breadcrumbs
+  - var title = 'Modal Component'
+
+block append styles
+  link(rel="stylesheet", href="../../stylesheets/modal.css")
+  link(rel="stylesheet", href="../../stylesheets/button.css")
+
+block append scripts
+  script(src="../../javascripts/bootstrap.bundle.min.js")  
+
+block content
+  .row
+    .col-12
+      - var modal_id = 'modal_1'
+      include modal 
