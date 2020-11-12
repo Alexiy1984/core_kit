@@ -202,4 +202,3 @@ exports.buildcoms = buildPugComponents;
 exports.buildindex = buildIndex;
 //For test purposes
 exports.getcomsdir = getComponentsDirectories;
-exports.test = buildTest;
