@@ -44,7 +44,7 @@ function getDirectories(source) {
 function getComponentsDirectories(cb) {
   console.log(getDirectories('./views/components'));
   cb();
-}   
+}
 
 function buildIndex() {
   del([
@@ -202,3 +202,4 @@ exports.buildcoms = buildPugComponents;
 exports.buildindex = buildIndex;
 //For test purposes
 exports.getcomsdir = getComponentsDirectories;
+exports.test = buildTest;
