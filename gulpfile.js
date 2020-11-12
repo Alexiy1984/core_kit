@@ -9,7 +9,8 @@ concat = require('gulp-concat'),
 autoprefixer = require('gulp-autoprefixer'),
 plumber = require('gulp-plumber'),
 del = require('del'),
-babel = require("gulp-babel");
+babel = require("gulp-babel"),
+merge = require('merge-stream');
 
 var sassOptions = {
   outputStyle: 'expanded',
@@ -30,48 +31,47 @@ var buildPaths = {
   }
 }
 
-separateComponents = [
-  'dropdown', 
-  'input-group',
-  'button'
-];
+function getDirectories(source) {
+  const all_dir = fs.readdirSync(source, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
 
-function builIndex(cb) {
+    const comp_dir = all_dir.filter(elt => elt.substr(0,1) !== '_')
+
+  return comp_dir;  
+}
+  
+function getComponentsDirectories(cb) {
+  console.log(getDirectories('./views/components'));
+  cb();
+}   
+
+function buildIndex() {
   del([
     'public/index.html', 
+    'public/components/*', 
+    '!public/components/*.md'
   ]);
-  src([ 
-    'views/index.pug',
-  ])
+  var main_index = src('views/index.pug')
     .pipe(plumber())
-    .pipe(data(function(file) {
-      return JSON.parse(fs.readFileSync('./data/data.json'))
-    }))
-    .pipe(pug({
-      doctype: 'html',
-      pretty: true
-    }))
-    .pipe(dest('public'))
-  cb();
+    .pipe(data(function(file){return JSON.parse(fs.readFileSync('./data/data.json'))}))
+    .pipe(pug({doctype: 'html', pretty: true}))
+    .pipe(dest('public'));
+  var components_index = src('views/components/*.pug')
+    .pipe(plumber())
+    .pipe(data(function(file){return JSON.parse(fs.readFileSync('./data/data.json'))}))
+    .pipe(pug({doctype: 'html', pretty: true}))
+    .pipe(dest('public/components'));  
+  return merge(main_index, components_index);
 }
  
-function buildHTML(cb) {
+function buildLayouts(cb) {
   del([
-    'public/components/**/*', 
-    '!public/components',
-    '!public/components/button',
-    '!public/components/dropdown',
-    '!public/components/input-group',
-    '!public/stylesheets', 
-    '!public/javascripts', 
-    '!public/assets',
-    '!public/components/**/*.md',
+    'public/layouts/**/*', 
+    '!public/layouts/**/*.md',
   ]);
   src([ 
-    'views/components/**/*.pug',
-    '!views/components/input-group/**/*',
-    '!views/components/dropdown/**/*',
-    '!views/components/button/**/*',
+    'views/layouts/**/*.pug',
     '!views/**/_*/',
     '!views/**/_*/**/*',
   ])
@@ -83,39 +83,17 @@ function buildHTML(cb) {
       doctype: 'html',
       pretty: true
     }))
-    .pipe(dest('public/components'))
+    .pipe(dest('public/layouts'))
     .pipe(sync.stream());
   cb();
 }
 
-// function buldDropdown(cb) {
-//   del([
-//     buildPaths.destination.componentsDir+'/dropdown/**', 
-//     '!'+ buildPaths.destination.componentsDir + '/dropdown', 
-//     '!'+ buildPaths.destination.componentsDir + 'dropdown/*.md',
-//   ]);
-//   src([ 
-//     buildPaths.source.componentsDir + '/dropdown/**/*.pug',
-//   ])
-//     .pipe(plumber())
-//     .pipe(data(function(file) {
-//       return JSON.parse(fs.readFileSync('./data/data.json'))
-//     }))
-//     .pipe(pug({
-//       doctype: 'html',
-//       pretty: true
-//     }))
-//     .pipe(dest(buildPaths.destination.componentsDir+'/dropdown'))
-//   cb();
-// }
-
-function buildPugComponent(cb, componentDir) {
+function buildPugComponent(componentDir) {
   del([
     `${buildPaths.destination.componentsDir}/${componentDir}/**`, 
     `!${buildPaths.destination.componentsDir}/${componentDir}`, 
     `!${buildPaths.destination.componentsDir}/${componentDir}/*.md`,
   ]);
-  console.log(`${buildPaths.destination.componentsDir}/${componentDir}/**`,);
   src([ 
     `${buildPaths.source.componentsDir}/${componentDir}/**/*.pug`,
   ])
@@ -128,37 +106,22 @@ function buildPugComponent(cb, componentDir) {
       pretty: true
     }))
     .pipe(dest(`${buildPaths.destination.componentsDir}/${componentDir}`))
-  cb();
 }
 
-function buildPugComponents(cb) {
-  separateComponents.forEach(name => {
-    var componentDir = name;
+function buildPugComponents() {
+  var compiled_comps = 0;
+  var comps_dirs = getDirectories('./views/components');
 
-    buildPugComponent(cb, componentDir);
+  comps_dirs.forEach(name => {
+    console.log(`\x1b[37m Buld \x1b[32m${name} \x1b[34mcomponent`);
+    buildPugComponent(name);
+    compiled_comps++;
   });
-  cb();
-}
 
-function buldInputsGroupCp(cb) {
-  del([
-    'public/components/input-group/**', 
-    '!public/components/input-group', 
-    '!public/components/input-group/*.md',
-  ]);
-  src([ 
-    'views/components/input-group/**/*.pug',
-  ])
-    .pipe(plumber())
-    .pipe(data(function(file) {
-      return JSON.parse(fs.readFileSync('./data/data.json'))
-    }))
-    .pipe(pug({
-      doctype: 'html',
-      pretty: true
-    }))
-    .pipe(dest('public/components/input-group'))
-  cb();
+  return new Promise(function(resolve, reject) {
+    console.log(`\x1b[37mTotal \x1b[35m${compiled_comps} \x1b[37mout of \x1b[35m${comps_dirs.length} \x1b[37mcomponents was \x1b[36mbuilded`);
+    resolve();
+  });
 }
 
 function generateCSS(cb) {
@@ -201,8 +164,8 @@ function buldCoreJs(cb) {
 };
 
 function browserSync(cb) {
-  builIndex(cb);
-  buildHTML(cb); 
+  buildIndex(cb);
+  buildLayouts(cb); 
   buildPugComponents(cb);
   generateCSS(cb);
   buldCoreJs(cb);
@@ -216,23 +179,26 @@ function browserSync(cb) {
   });
   
   watch('./assets/**/*', copyAssets);
-  const watcher = watch(['./views/*.pug']);
-  watcher.on('change', function(path, stats) {
-    buildHTML;
-    console.log(`File ${path} was changed`);
+  watch(['./views/layouts/**/*.pug']).on('change', function (path) {
+    buildLayouts;
+    console.log(`File \x1b[35m${path}\x1b[37m was \x1b[36mchanged`);
   });
-
-  watch('./views/**/*.md', copyReadme);
-  watch('./views/**/*.pug', buildHTML);
-  watch(['./input-group/**/*.pug', './dropdown/**/*.pug'], buildPugComponents);
+  watch('./views/**/*.md').on('change', function (path) {
+    copyReadme;
+    console.log(`File \x1b[35m${path}\x1b[37m was \x1b[36mchanged`);
+  });;
+  watch('./views/**/*.pug', buildLayouts);
+  watch(['./views/components/**/*.pug'], buildPugComponents);
   watch('./scss', generateCSS);
   watch('./public/**.html').on('change', sync.reload);
 }
 
-exports.default = parallel(series(builIndex, buildHTML, buildPugComponents), copyReadme, generateCSS, buldCoreJs, copyAssets);
-exports.html = buildHTML;
+exports.default = parallel(series(buildIndex, buildLayouts, buildPugComponents), copyReadme, generateCSS, buldCoreJs, copyAssets);
 exports.sync = browserSync;
 exports.css = generateCSS;
 exports.corejs = buldCoreJs;
-exports.buldinputgroup = buldInputsGroupCp;
-exports.pugcomps = buildPugComponents;
+exports.buildlts = buildLayouts;
+exports.buildcoms = buildPugComponents;
+exports.buildindex = buildIndex;
+//For test purposes
+exports.getcomsdir = getComponentsDirectories;
