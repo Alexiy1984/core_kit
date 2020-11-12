@@ -49,7 +49,7 @@ function getComponentsDirectories(cb) {
 function buildIndex() {
   del([
     'public/index.html', 
-    'public/components/*', 
+    'public/components/*.*',
     '!public/components/*.md'
   ]);
   var main_index = src('views/index.pug')
@@ -187,10 +187,10 @@ function browserSync(cb) {
     copyReadme;
     console.log(`File \x1b[35m${path}\x1b[37m was \x1b[36mchanged`);
   });;
-  watch('./views/**/*.pug', buildLayouts);
-  watch(['./views/components/**/*.pug'], buildPugComponents);
+  watch(['./views/index.pug', './views/components/index.pug'], buildIndex);
+  watch(['./views/components/**/*.pug', '!./views/components/index.pug'], buildPugComponents);
   watch('./scss', generateCSS);
-  watch('./public/**.html').on('change', sync.reload);
+  watch('./public/**/*.html').on('change', sync.reload);
 }
 
 exports.default = parallel(series(buildIndex, buildLayouts, buildPugComponents), copyReadme, generateCSS, buldCoreJs, copyAssets);

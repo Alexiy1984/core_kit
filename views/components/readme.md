@@ -8,5 +8,6 @@
 * [tabs](tabs/)
 * [pagination](pagination/)
 * [tag](tag/)
+* [toggler] (toggler/)
 
 ### [Go to Main page](/)
