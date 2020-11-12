@@ -22,6 +22,7 @@ $theme: $main_theme;
     height: 24px;
     width: 24px;
     border-radius: 50%;
+    transition: left 0.15s ease-in;
   }
 
   &:hover {
@@ -34,6 +35,10 @@ $theme: $main_theme;
 
     &:hover {
       background-color: map_get($theme, 'accent_1_5');
+    }
+
+    &::before {
+      left: calc(100% - 27px);
     }
   }
 
@@ -59,6 +64,12 @@ $theme: $main_theme;
     &::before {
       width: 18px;
       height: 18px;
+    }
+
+    &.active {
+      &::before {
+        left: calc(100% - 21px);
+      }
     }
   }
 }
