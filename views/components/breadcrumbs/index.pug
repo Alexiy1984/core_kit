@@ -1,18 +1,26 @@
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Index
-    link(rel="stylesheet", href="../../stylesheets/index.css")
-    link(rel="stylesheet", href="../../stylesheets/breadcrumbs.css")
-    script(src="../../javascripts/jquery.min.js")
-  body
-    .container
-      .row.mt-5.mb-4 
-        include breadcrumbs.pug
-      .row.mb-4 
-        include breadcrumbs_with-icons.pug
-      .row.mb-4
-        include breadcrumbs_arrow.pug
-      .row.mb-4
-        include breadcrumbs_arrow_with-icon.pug      
+extends ../_blank/index.pug
+
+block variables
+  - var breadcrumbs_name = sp_breadcrumbs_breadcrumbs
+  - var title = 'Breadcrumns component'
+
+block append styles
+
+block append scripts
+
+block breadcrumbs
+
+block content
+  .row
+    .col-12.mb-4      
+      include breadcrumbs
+    .col-12.mb-4 
+      include breadcrumbs_mixin-style 
+    .col-12.mb-4 
+      include breadcrumbs_mixin-style_with-icon   
+    .col-12.mb-4 
+      include breadcrumbs_with-icons
+    .col-12.mb-4 
+      include breadcrumbs_arrow
+    .col-12.mb-4 
+      include breadcrumbs_arrow_with-icon    

@@ -134,4 +134,11 @@ h5 {
   &_heavy {
     font-weight: 900;
   }
+
+  @for $text_color_index from 1 to 7 {
+    &_grey-dark_#{$text_color_index} {
+      color: map_get($theme, 'grey-dark_' + $text_color_index);
+    }
+  }
 }
+

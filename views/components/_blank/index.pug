@@ -15,7 +15,7 @@ html(lang="en")
       script(src="../../javascripts/jquery.min.js")
   body
     mixin breadcrumbs(breadcrumbs_name) 
-      .col-12.mb-3
+      .col-12.mb-5
         ul.breadcrumbs
           each breadcrumb in breadcrumbs_name
             - var link = breadcrumb.link 
@@ -24,9 +24,10 @@ html(lang="en")
             - var icon = breadcrumb.icon 
             include ../breadcrumbs/breadcrumbs__item
     .container
-      .row.my-5
-        +breadcrumbs(breadcrumbs_name)
+      .row.mt-5
+        block breadcrumbs
+          +breadcrumbs(breadcrumbs_name)
       block content
         .row
           .col-12 
-            p 
+            p blank page extended

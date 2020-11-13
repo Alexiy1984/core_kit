@@ -6,6 +6,7 @@ $theme: $main_theme;
   padding: 0;
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   margin: 0;
 
   li {
@@ -14,6 +15,7 @@ $theme: $main_theme;
     line-height: 20px;
     display: flex;
     align-items: center;
+    margin-bottom: 5px;
 
     svg {
       width: 20px;
