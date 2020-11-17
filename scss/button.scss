@@ -45,6 +45,21 @@ $theme: $main_theme;
       margin-left: 11px;
     }
   }
+
+  &_rounded {
+    @extend .button;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
   
   &_small {
     @extend .button;
@@ -68,6 +83,12 @@ $theme: $main_theme;
       & + svg {
         margin-left: 9px;
       }
+    }
+
+    &.button_rounded {
+      border-radius: 20px;
+      width: 40px;
+      height: 40px;
     }
   }
 
@@ -93,6 +114,12 @@ $theme: $main_theme;
       & + svg {
         margin-left: 14px;
       }
+    }
+
+    &.button_rounded {
+      border-radius: 30px;
+      width: 60px;
+      height: 60px;
     }
   }
 
@@ -127,7 +154,7 @@ $theme: $main_theme;
     @include button_colors_new($danger_button_colorset);
   }
 
-  &_succes {
+  &_success {
     @extend .button;
     @include button_colors_new($success_button_colorset);
   }
@@ -275,7 +302,7 @@ $theme: $main_theme;
     }
   }
 
-  &_succes {
+  &_success {
     @extend .btn-group;
 
     .button {

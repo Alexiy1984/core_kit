@@ -1,46 +1,40 @@
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Index
-    link(rel="stylesheet", href="../../stylesheets/index.css")
-    link(rel="stylesheet", href="../../stylesheets/breadcrumbs.css")
+extends ../_blank/index.pug
 
-    link(rel="stylesheet", href="../../stylesheets/button.css")
-    script(src="../../javascripts/jquery.min.js")
-  body
-    .container
-      .row.mt-5
-        .col-12
-          ul.breadcrumbs
-            each breadcrumb in sp_button_breadcrumbs
-              - var link = breadcrumb.link 
-              - var name = breadcrumb.name 
-              - var active = breadcrumb.active 
-              - var icon = breadcrumb.icon 
-              include ../breadcrumbs/breadcrumbs__item
-        .col-12.d-flex.align-items-center.mt-4.mb-4
-          include button
-          .ml-3
-          include button_small
-          .ml-3
-          include button_large
-          .ml-3
-        .col-12.d-flex.align-items-center.mb-4
-          include button_outline
-          .ml-3
-          include button_disabled
-          .ml-3
-          include button_danger
-          .ml-3
-          include button_succes
-          .ml-3
-          include button_warning
-        .col-12.d-flex.align-items-center
-          include combined_button
-        .col-6
-          p
-            span#multiple
-        .col-6
-          p
-            span#select       
+block variables
+  - var breadcrumbs_name = sp_button_breadcrumbs
+  - var title = 'Button'
+
+block append styles
+  link(rel="stylesheet", href="../../stylesheets/button.css")
+
+block content
+  .row
+    .col-12.d-flex.align-items-center.mt-4.mb-4
+      include button
+      .ml-3
+      include button_small
+      .ml-3
+      include button_large
+      .ml-3
+    .col-12.d-flex.align-items-center.mb-4
+      include button_outline
+      .ml-3
+      include button_disabled
+      .ml-3
+      include button_danger
+      .ml-3
+      include button_succes
+      .ml-3
+      include button_warning
+    .col-12.d-flex.align-items-center
+      include combined_button
+    .col-6
+      p
+        span#multiple
+    .col-6
+      p
+        span#select   
+    .col-12
+      include button_rounded 
+      include button_rounded_small  
+      include button_rounded_large        
