@@ -52,11 +52,6 @@ $outline_button_colorset : (
 $primary_button_colorset : (
   "normal_colors": (#fff, map_get($theme, 'primary'), map_get($theme, 'primary')), 
   "hover_colors": (#fff, map_get($theme, 'primary-hover'), rgba(0, 0, 0, 0)),
-);
-
-$primary_button_colorset : (
-  "normal_colors": (#fff, map_get($theme, 'primary'), map_get($theme, 'primary')), 
-  "hover_colors": (#fff, map_get($theme, 'primary-hover'), rgba(0, 0, 0, 0)),
   "active_colors": (#fff, map_get($theme, 'primary-active'), map_get($theme, 'primary-active')),
 );
 
