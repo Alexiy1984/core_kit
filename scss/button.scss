@@ -15,6 +15,7 @@ $theme: $main_theme;
   padding-left: 18px;
   padding-right: 18px;
   white-space: nowrap;
+  transition: color 0.15s ease-in, border-color 0.15s ease-in, background-color 0.15s ease-in;
 
   &:focus,
   &.focus {
@@ -27,6 +28,7 @@ $theme: $main_theme;
     position: relative;
     fill: #fff;
     margin-bottom: 2px;
+    transition: fill 0.15s ease-in;
 
     & + span {
       margin-left: 11px;
