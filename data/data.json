@@ -249,5 +249,24 @@
       "active": true,
       "icon": "../../assets/svg/base-sprite/base-sprite.svg#Box"
     }
+  ],
+  "sp_alert_breadcrumbs": [
+    {
+      "name": "Main",
+      "link": "/",
+      "active": false
+    },
+    {
+      "name": "Components",
+      "link": "../",
+      "active": false,
+      "icon": "../../assets/svg/base-sprite/base-sprite.svg#Box"
+    },
+    {
+      "name": "Alert",
+      "link": "components/alert",
+      "active": true,
+      "icon": "../../assets/svg/base-sprite/base-sprite.svg#Box"
+    }
   ]
 }  
