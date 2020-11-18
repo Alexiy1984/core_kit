@@ -30,11 +30,10 @@ $theme: $main_theme;
   }
 
   &.active {
-    @extend .toggler;
-    background-color: map_get($theme, 'accent_1_4');
+    background-color: map_get($theme, 'primary');
 
     &:hover {
-      background-color: map_get($theme, 'accent_1_5');
+      background-color: map_get($theme, 'primary-active');
     }
 
     &::before {
@@ -42,8 +41,31 @@ $theme: $main_theme;
     }
   }
 
-  &.disabled {
+  &_secondary {
     @extend .toggler;
+
+    &.active {
+      background-color: map_get($theme, 'secondary');
+  
+      &:hover {
+        background-color: map_get($theme, 'secondary-active');
+      }
+    }
+  }
+
+  &_dark {
+    @extend .toggler;
+
+    &.active {
+      background-color: map_get($theme, 'dark');
+  
+      &:hover {
+        background-color: map_get($theme, 'dark-active');
+      }
+    }
+  }
+
+  &.disabled {
     pointer-events: none;
 
     &::before {
