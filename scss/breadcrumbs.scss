@@ -28,9 +28,11 @@ $theme: $main_theme;
       color: map_get($theme, 'grey-dark_3');
       display: flex;
       align-items: center;
+      transition: color 0.15s ease-in;
 
       svg {
         margin-right: 10px;
+        transition: fill 0.15s ease-in;
       }
 
       span {
@@ -64,11 +66,18 @@ $theme: $main_theme;
       color: map_get($theme, 'grey-dark_3');
       right: 0;
       margin: 0 12px;
+      transition: color 0.15s ease-in;
     }
 
     &:last-child {
       &::after {
         display: none;
+      }
+    }
+
+    &:hover {
+      &::after {
+        color: map_get($theme, 'grey-dark_4');
       }
     }
   }
