@@ -1,123 +1,115 @@
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Index
-    link(rel="stylesheet", href="../../stylesheets/index.css")
-    link(rel="stylesheet", href="../../stylesheets/breadcrumbs.css")
+extends ../_blank/index.pug
 
-    link(rel="stylesheet", href="../../stylesheets/input-group.css")
-    script(src="../../javascripts/jquery.min.js")
-  body
-    .container
-      .row.my-5
-        .col-12.mb-5
-          ul.breadcrumbs
-            each breadcrumb in sp_input_group_breadcrumbs
-              - var link = breadcrumb.link 
-              - var name = breadcrumb.name 
-              - var active = breadcrumb.active 
-              - var icon = breadcrumb.icon 
-              include ../breadcrumbs/breadcrumbs__item
-        .col-12.mb-4
-          include input-group
-        .col-12.mb-4
-          include input-group_small
-        .col-12.mb-4
-          include input-group_large      
-        .col-12.col-md-6.mb-4
-          include input-group_with-prepend
-        .col-12.col-md-6.mb-4
-          include input-group_with-append
-        .col-12.col-md-6.mb-4
-          include input-group_with-button
-        .col-12.col-md-6.mb-4
-          include input-group_with-button_append
-        .col-12.col-md-6.mb-4
-          include input-group_noborder
-        .col-12.col-md-6.mb-4
-          include input-group_lowborder
-        .col-12.col-md-6.mb-4
-          div(class='input-group_info')
-            div(class='input-group-prepend')
-              span(class='input-group-text') 
-                svg
-                  use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Dot")
-            input(class='form-control' type='text' name='text-1' placeholder='Info group')
-        .col-12.col-md-6.mb-4
-          div(class='input-group_info input-group_noborder')
-            div(class='input-group-prepend')
-              span(class='input-group-text') 
-                svg
-                  use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Dot")
-            input(class='form-control' type='text' name='text-1' placeholder='Info group')
-        .col-12.col-md-6.mb-4
-          div(class='input-group_success')
-            div(class='input-group-prepend')
-              span(class='input-group-text') 
-                svg
-                  use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Success")
-            input(class='form-control' type='text' name='text-1' placeholder='Input group')
-        .col-12.col-md-6.mb-4
-          div(class='input-group_success input-group_noborder')
-            div(class='input-group-prepend')
-              span(class='input-group-text') 
-                svg
-                  use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Success")
-            input(class='form-control' type='text' name='text-1' placeholder='Input group')   
-        .col-12.col-md-6.mb-4
-          div(class='input-group_warning')
-            div(class='input-group-prepend')
-              span(class='input-group-text') 
-                svg
-                  use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Alert")
-            input(class='form-control' type='text' name='text-1' placeholder='Input group')
-        .col-12.col-md-6.mb-4
-          div(class='input-group_warning input-group_noborder')
-            div(class='input-group-prepend')
-              span(class='input-group-text') 
-                svg
-                  use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Alert")
-            input(class='form-control' type='text' name='text-1' placeholder='Input group')
-        .col-12.col-md-6.mb-4
-          div(class='input-group_danger')
-            div(class='input-group-prepend')
-              span(class='input-group-text') 
-                svg
-                  use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Warning")
-            input(class='form-control' type='text' name='text-1' placeholder='Input group')
-        .col-12.col-md-6.mb-4
-          div(class='input-group_danger input-group_noborder')
-            div(class='input-group-prepend')
-              span(class='input-group-text') 
-                svg
-                  use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Warning")
-            input(class='form-control' type='text' name='text-1' placeholder='Input group')
-        .col-12.col-md-6.mb-4
-          div(class='input-group_info')
-            div(class='input-group-prepend')
-              button(class='button')  Info Button
-            input(class='form-control' type='text' name='text-1' placeholder='Input group')
-        .col-12.col-md-6.mb-4
-          div(class='input-group_success')
-            input(class='form-control' type='text' name='text-1' placeholder='Input group')
-            div(class='input-group-append')
-              button(class='button')  Info Button
-        .col-12.col-md-6.mb-4
-          div(class='input-group_warning')
-            div(class='input-group-prepend')
-              button(class='button')  Info Button
-            input(class='form-control' type='text' name='text-1' placeholder='Input group')
-        .col-12.col-md-6.mb-4
-          div(class='input-group_danger')
-            input(class='form-control' type='text' name='text-1' placeholder='Input group')
-            div(class='input-group-append')
-              button(class='button')  Info Button
-        .col-12.col-md-6.mb-4
-          include input-group_password
-        .col-12.col-md-6.mb-4  
-          include input-group_password_prepend
+block variables
+  - var breadcrumbs_name = sp_input_group_breadcrumbs
+  - var title = 'Input Group'
 
-script
+block append styles
+  link(rel="stylesheet", href="../../stylesheets/input-group.css")
+
+block content
+  .row
+    .col-12.mb-4
+      include input-group
+    .col-12.mb-4
+      include input-group_small
+    .col-12.mb-4
+      include input-group_large      
+    .col-12.col-md-6.mb-4
+      include input-group_with-prepend
+    .col-12.col-md-6.mb-4
+      include input-group_with-append
+    .col-12.col-md-6.mb-4
+      include input-group_with-button
+    .col-12.col-md-6.mb-4
+      include input-group_with-button_append
+    .col-12.col-md-6.mb-4
+      include input-group_noborder
+    .col-12.col-md-6.mb-4
+      include input-group_lowborder
+    .col-12.col-md-6.mb-4
+      div(class='input-group_info')
+        div(class='input-group-prepend')
+          span(class='input-group-text') 
+            svg
+              use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Dot")
+        input(class='form-control' type='text' name='text-1' placeholder='Info group')
+    .col-12.col-md-6.mb-4
+      div(class='input-group_info input-group_noborder')
+        div(class='input-group-prepend')
+          span(class='input-group-text') 
+            svg
+              use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Dot")
+        input(class='form-control' type='text' name='text-1' placeholder='Info group')
+    .col-12.col-md-6.mb-4
+      div(class='input-group_success')
+        div(class='input-group-prepend')
+          span(class='input-group-text') 
+            svg
+              use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Success")
+        input(class='form-control' type='text' name='text-1' placeholder='Input group')
+    .col-12.col-md-6.mb-4
+      div(class='input-group_success input-group_noborder')
+        div(class='input-group-prepend')
+          span(class='input-group-text') 
+            svg
+              use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Success")
+        input(class='form-control' type='text' name='text-1' placeholder='Input group')   
+    .col-12.col-md-6.mb-4
+      div(class='input-group_warning')
+        div(class='input-group-prepend')
+          span(class='input-group-text') 
+            svg
+              use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Alert")
+        input(class='form-control' type='text' name='text-1' placeholder='Input group')
+    .col-12.col-md-6.mb-4
+      div(class='input-group_warning input-group_noborder')
+        div(class='input-group-prepend')
+          span(class='input-group-text') 
+            svg
+              use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Alert")
+        input(class='form-control' type='text' name='text-1' placeholder='Input group')
+    .col-12.col-md-6.mb-4
+      div(class='input-group_danger')
+        div(class='input-group-prepend')
+          span(class='input-group-text') 
+            svg
+              use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Warning")
+        input(class='form-control' type='text' name='text-1' placeholder='Input group')
+    .col-12.col-md-6.mb-4
+      div(class='input-group_danger input-group_noborder')
+        div(class='input-group-prepend')
+          span(class='input-group-text') 
+            svg
+              use(xlink:href="../../assets/svg/base-sprite/base-sprite.svg#Warning")
+        input(class='form-control' type='text' name='text-1' placeholder='Input group')
+    .col-12.col-md-6.mb-4
+      div(class='input-group_info')
+        div(class='input-group-prepend')
+          button(class='button')  Info Button
+        input(class='form-control' type='text' name='text-1' placeholder='Input group')
+    .col-12.col-md-6.mb-4
+      div(class='input-group_success')
+        input(class='form-control' type='text' name='text-1' placeholder='Input group')
+        div(class='input-group-append')
+          button(class='button')  Info Button
+    .col-12.col-md-6.mb-4
+      div(class='input-group_warning')
+        div(class='input-group-prepend')
+          button(class='button')  Info Button
+        input(class='form-control' type='text' name='text-1' placeholder='Input group')
+    .col-12.col-md-6.mb-4
+      div(class='input-group_danger')
+        input(class='form-control' type='text' name='text-1' placeholder='Input group')
+        div(class='input-group-append')
+          button(class='button')  Info Button
+    .col-12.col-md-6.mb-4
+      include input-group_password
+    .col-12.col-md-6.mb-4  
+      include input-group_password_prepend
+    .col-12.col-md-6.mb-4  
+      include input-group_password_both  
+
+//- script
   include input-group_password.js  
 

@@ -1,29 +1,18 @@
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Index
-    link(rel="stylesheet", href="../../stylesheets/index.css")
-    link(rel="stylesheet", href="../../stylesheets/breadcrumbs.css")
+extends ../_blank/index.pug
 
-    link(rel="stylesheet", href="../../stylesheets/pagination.css")
-    script(src="../../javascripts/jquery.min.js")
-  body
-    .container
-      .row.my-5
-          .col-12.mb-3
-            ul.breadcrumbs
-              each breadcrumb in sp_pagination_breadcrumbs
-                - var link = breadcrumb.link 
-                - var name = breadcrumb.name 
-                - var active = breadcrumb.active 
-                - var icon = breadcrumb.icon 
-                include ../breadcrumbs/breadcrumbs__item
-      .row.mt-5.mb-4
-        include pagination
-      .row.mb-4
-        include pagination_with-controls  
-      .row.mb-4
-        include pagination_controls
-      .row.mb-4
-        include pagination_short     
+block variables
+  - var breadcrumbs_name = sp_pagination_breadcrumbs
+  - var title = 'Pagination'
+
+block append styles
+  link(rel="stylesheet", href="../../stylesheets/pagination.css")
+
+block content
+  .row.mt-5.mb-4
+    include pagination
+  .row.mb-4
+    include pagination_with-controls  
+  .row.mb-4
+    include pagination_controls
+  .row.mb-4
+    include pagination_short     

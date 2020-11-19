@@ -10,7 +10,8 @@ autoprefixer = require('gulp-autoprefixer'),
 plumber = require('gulp-plumber'),
 del = require('del'),
 babel = require("gulp-babel"),
-merge = require('merge-stream');
+merge = require('merge-stream'),
+uglify = require('gulp-uglify-es').default;
 
 var sassOptions = {
   outputStyle: 'expanded',
@@ -93,6 +94,7 @@ function buildPugComponent(componentDir) {
     `${buildPaths.destination.componentsDir}/${componentDir}/**`, 
     `!${buildPaths.destination.componentsDir}/${componentDir}`, 
     `!${buildPaths.destination.componentsDir}/${componentDir}/*.md`,
+    `!${buildPaths.destination.componentsDir}/${componentDir}/*.js`,
   ]);
   src([ 
     `${buildPaths.source.componentsDir}/${componentDir}/**/*.pug`,
@@ -109,6 +111,10 @@ function buildPugComponent(componentDir) {
 }
 
 function buildPugComponents() {
+  del([
+    `${buildPaths.destination.componentsDir}/**`,
+    `!${buildPaths.destination.componentsDir}/index.html`,
+  ]);
   var compiled_comps = 0;
   var comps_dirs = getDirectories('./views/components');
 
@@ -149,15 +155,33 @@ function copyReadme(cb) {
   cb();
 }
 
-function buldCoreJs(cb) {
-  del(['public/javascripts/**/*', '!public/javascripts/']);
+function buildCoreJs(cb) {
+  del([
+    'public/javascripts/jquery.min.js', 
+    'public/javascripts/jquery.min.map', 
+    'public/javascripts/bootstrap.bundle.min.js',
+    'public/javascripts/bootstrap.bundle.min.js.map',
+  ]);
   src([
     'node_modules/jquery/dist/jquery.min.js',
     'node_modules/jquery/dist/jquery.min.map',
     'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
     'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map',
   ])
-    // .pipe(babel()) 
+    .pipe(dest('public/javascripts'))
+    .pipe(sync.stream());
+  cb();
+};
+
+function bulidMainJs(cb) {
+  del('public/javascripts/main.js');
+  src([
+    'views/components/**/*.js',
+    '!views/components/**/_*.js',
+  ])
+    .pipe(babel()) 
+    // .pipe(uglify())
+    .pipe(concat('main.js'))
     .pipe(dest('public/javascripts'))
     .pipe(sync.stream());
   cb();
@@ -168,7 +192,7 @@ function browserSync(cb) {
   buildLayouts(cb); 
   buildPugComponents(cb);
   generateCSS(cb);
-  buldCoreJs(cb);
+  buildCoreJs(cb);
   copyAssets(cb);
   copyReadme(cb);
 
@@ -190,13 +214,15 @@ function browserSync(cb) {
   watch(['./views/index.pug', './views/components/index.pug'], buildIndex);
   watch(['./views/components/**/*.pug', '!./views/components/index.pug'], buildPugComponents);
   watch('./scss', generateCSS);
+  watch('./views/components/**/*.js', bulidMainJs);
   watch('./public/**/*.html').on('change', sync.reload);
 }
 
-exports.default = parallel(series(buildIndex, buildLayouts, buildPugComponents), copyReadme, generateCSS, buldCoreJs, copyAssets);
+exports.default = parallel(series(buildIndex, buildLayouts, buildPugComponents), copyReadme, generateCSS, buildCoreJs, bulidMainJs, copyAssets);
 exports.sync = browserSync;
 exports.css = generateCSS;
-exports.corejs = buldCoreJs;
+exports.corejs = buildCoreJs;
+exports.mainjs = bulidMainJs;
 exports.buildlts = buildLayouts;
 exports.buildcoms = buildPugComponents;
 exports.buildindex = buildIndex;

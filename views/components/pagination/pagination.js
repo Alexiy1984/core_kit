@@ -1,3 +1,4 @@
+// Pagination Component scripts -->
 $(function() {
   $('.pagination .page-item').not('.control, .disabled, .delimiter').on('click', function () {
     if ($(this).next().hasClass('control')) {
@@ -66,3 +67,4 @@ $(function() {
     };
   });
 });
+// Pagination Component scripts <--

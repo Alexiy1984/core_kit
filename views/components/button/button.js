@@ -1,29 +1,37 @@
+// Button Component scripts -->
 $(function() {
-  var text = '';
-  $('#select').text($('.btn-group[data-toggle="select"] .button_primary').first().text());
-  $('.btn-group[data-toggle="multiple"] .button_primary').each(function(){
-    text += $(this).text() + ' ';
-  });
+  var btn_groups = [
+    'btn-group',
+    'btn-group_primary',
+    'btn-group_success',
+    'btn-group_warning',
+    'btn-group_danger',
+    'btn-group_colorfull'
+  ];
 
-  $('#multiple').text(text);
-
-  $('.btn-group[data-toggle="multiple"] .button_outline, .btn-group[data-toggle="multiple"]  .button_primary').on('click', function () {
-    $(this)
-      .toggleClass('button_primary')
-      .toggleClass('button_outline');
-      text = '';
-      $('.btn-group[data-toggle="multiple"] .button_primary').each(function(){
-        text += $(this).text() + ' ';
+  for (var bg in btn_groups) {
+    var btn_group = btn_groups[bg];
+    (function(btng){
+      $(`.${btng}:not([data-toggle="multiple"]) > *`).on('click', function(){
+        if (!$(this).hasClass('button_disabled') && !$(this).hasClass('disabled')) {
+          $(this).toggleClass('selected');
+          $(this).siblings().removeClass('selected');
+        }
       });
-      $('#multiple').text(text);
-  });
-  $('.btn-group[data-toggle="select"] .button_outline, .btn-group[data-toggle="select"]  .button_primary').on('click', function () {
-    $(this).siblings()
-      .addClass('button_outline')
-      .removeClass('button_primary');
-    $(this)
-      .toggleClass('button_primary')
-      .toggleClass('button_outline');
-    $('#select').text($(this).text());  
-  })
+      $(`.${btng}[data-toggle="multiple"] > *`).on('click', function(){
+        if (!$(this).hasClass('button_disabled') && !$(this).hasClass('disabled')) {
+          $(this).toggleClass('selected');
+        }
+      });
+    }(btn_group))
+  }
+
+  // $('.btn-group > * , .btn-group_primary > * ,.btn-group_success > * ,.btn-group_warning > * ,.btn-group_danger > * ,.btn-group_colorfull > * ')
+  // .on('click', function () {
+  //   if (!$(this).hasClass('button_disabled') && !$(this).hasClass('disabled')) {
+  //     $(this).toggleClass('selected');
+  //     $(this).siblings().removeClass('selected');
+  //   }
+  // });
 });
+// Button Component scripts <--

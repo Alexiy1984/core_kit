@@ -24,22 +24,9 @@ div.container
             span(class='input-group-text_nobg')
               include ../components/icon_eye
     div(class='col-12 col-md-6 mb-3')
-      div(class='input-group_noborder input-group_large mb-3')
-          div(class='input-group-prepend')
-            span(class='input-group-text_nobg')
-              include ../components/icon_lightning
-          input(class='form-control' type='text' name='text-1')
-          div(class='input-group-append')
-            span(class='input-group-text_nobg')
-              include ../components/icon_eye  
+      include ../components/input-group/input-group_password_prepend
     div(class='col-12 col-md-6 mb-3')
-      div(class='input-group input-group_large mb-3')
-          div(class='input-group-prepend')
-            button(class='button button_outline') Button
-          input(class='form-control' type='text' name='text-1')
-          div(class='input-group-append')
-            button(class='button button_primary') 
-              include ../components/icon_eye
+      include ../components/input-group/input-group_password
     div(class='col-12 col-md-6 mb-3')
       div(class='input-group_noborder input-group_info mb-3')
           div(class='input-group-prepend')
