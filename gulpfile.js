@@ -180,7 +180,7 @@ function bulidMainJs(cb) {
     '!views/components/**/_*.js',
   ])
     .pipe(babel()) 
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(concat('main.js'))
     .pipe(dest('public/javascripts'))
     .pipe(sync.stream());
@@ -193,6 +193,7 @@ function browserSync(cb) {
   buildPugComponents(cb);
   generateCSS(cb);
   buildCoreJs(cb);
+  bulidMainJs(cb);
   copyAssets(cb);
   copyReadme(cb);
 
