@@ -9,10 +9,18 @@ NC='\033[0m' # No Color
 
 if [ "$1" != "" ]; then
   COMPT="$(tr '[:lower:]' '[:upper:]' <<< ${1:0:1})${1:1}"
-  mkdir -p views/components/$1 
-  cp views/components/_extended/index.pug views/components/$1/index.pug
-  echo "//- ${COMPT} component"> views/components/$1/$1.pug
+  if [[ ! -d views/components/$1 ]]; then
+    mkdir views/components/$1;
+    if cp views/components/_extended/index.pug views/components/$1/index.pug; then
+      echo "//- ${COMPT} component"> views/components/$1/$1.pug 
+      echo "// ${COMPT} Component scripts -->"> views/components/$1/$1.js
+      echo -e "\n${CYAN}${COMPT}${NC} component ${GREEN}created${NC}\n"
+    fi
+  else 
+    echo -e "\n${RED}ERROR: component folder wasn't created${NC} - folder already exists\n"
+  fi 
 else
 NOW=$(date +"%m.%d.%Y %T")
 echo -e "\n${RED}Component name missing:${NC}\n\nPlease add ${CYAN}one parameter${NC} to script name \n\n[${GREEN}Exit:${NC} ${NOW}]\n"
 fi
+
