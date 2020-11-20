@@ -161,12 +161,16 @@ function buildCoreJs(cb) {
     'public/javascripts/jquery.min.map', 
     'public/javascripts/bootstrap.bundle.min.js',
     'public/javascripts/bootstrap.bundle.min.js.map',
+    'public/javascripts/imask.min.js',
+    'public/javascripts/imask.min.js.map',
   ]);
   src([
     'node_modules/jquery/dist/jquery.min.js',
     'node_modules/jquery/dist/jquery.min.map',
     'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
     'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map',
+    'node_modules/imask/dist/imask.min.js',
+    'node_modules/imask/dist/imask.min.js.map',
   ])
     .pipe(dest('public/javascripts'))
     .pipe(sync.stream());
@@ -180,7 +184,7 @@ function bulidMainJs(cb) {
     '!views/components/**/_*.js',
   ])
     .pipe(babel()) 
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(concat('main.js'))
     .pipe(dest('public/javascripts'))
     .pipe(sync.stream());
