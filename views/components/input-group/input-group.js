@@ -48,7 +48,6 @@ $(function() {
 });
 //// Input group password input actions <--
 //// Input group card inputs actions -->
-
 $(function() {
   var cardnumber_opts = {
     mask: [
@@ -131,7 +130,6 @@ $(function() {
 
   $('.input-group_card .input-group_card__crd').each(function() {
     var cardnumber = this;
-    //Mask the Credit Card Number Input
     var cardnumber_mask = new IMask(cardnumber, cardnumber_opts);
 
     cardnumber_mask.on("accept", function () {
@@ -143,44 +141,35 @@ $(function() {
       } else { 
       }
     });
-  })
+  });
+
+  $('.input-group_card .input-group_card__exp').each(function() {
+    var expirationdate = this;
+
+    var expirationdate_mask = new IMask(expirationdate, {
+      mask: 'MM{/}YY',
+      blocks: {
+        YY: {
+          mask: IMask.MaskedRange,
+          from: 0,
+          to: 99,
+        },
+        MM: {
+          mask: IMask.MaskedRange,
+          from: 1,
+          to: 12,
+        },
+      }
+    });
+  });
   
- 
-  // const expirationdate = document.getElementById('expirationdate');
-  // const securitycode = document.getElementById('securitycode');
+  $('.input-group_card .input-group_card__cvv').each(function() {
+    var securitycode = this;
 
-  if (cardnumber) {
-    
-
-  // //Mask the Expiration Date
-  // var expirationdate_mask = new IMask(expirationdate, {
-  //     mask: 'MM{/}YY',
-  //     groups: {
-  //         YY: new IMask.MaskedPattern.Group.Range([0, 99]),
-  //         MM: new IMask.MaskedPattern.Group.Range([1, 12]),
-  //     }
-  // });
-
-  // //Mask the security code
-  // var securitycode_mask = new IMask(securitycode, {
-  //     mask: '0000',
-  // });
-
-  //pop in the appropriate card icon when detected
-  
-
-  // expirationdate_mask.on('accept', function () {
-  //     if (expirationdate_mask.value.length == 0) {
-  //     } else {
-  //     }
-  // });
-
-  // securitycode_mask.on('accept', function () {
-  //     if (securitycode_mask.value.length == 0) {
-  //     } else {
-  //     }
-  // });
-  }
+    var securitycode_mask = new IMask(securitycode, {
+      mask: '0000',
+    });
+  });
 });  
 //// Input group card inputs actions <--
 // Input group Component scripts <--
