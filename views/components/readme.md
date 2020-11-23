@@ -2,7 +2,7 @@
 
 * [button](button/)
 * [breadcrumbs](breadcrumbs/)
-* [form-control](form-control/)
+* [form](form/)
 * [input-group](input-group/)
 * [dropdown](dropdown/)
 * [tabs](tabs/)

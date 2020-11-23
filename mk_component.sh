@@ -13,7 +13,7 @@ if [ "$1" != "" ]; then
     mkdir views/components/$1;
     if cp views/components/_extended/index.pug views/components/$1/index.pug; then
       echo "//- ${COMPT} component"> views/components/$1/$1.pug 
-      echo "// ${COMPT} Component scripts -->"> views/components/$1/$1.js
+      echo -e "// ${COMPT} Component scripts -->\n// ${COMPT} Component scripts <--"> views/components/$1/$1.js
       echo -e "\n${CYAN}${COMPT}${NC} component ${GREEN}created${NC}\n"
     fi
   else 

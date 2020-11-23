@@ -98,7 +98,7 @@
       "icon": "../../assets/svg/base-sprite/base-sprite.svg#Box"
     }
   ],
-  "sp_fc_breadcrumbs": [
+  "sp_form_breadcrumbs": [
     {
       "name": "Main",
       "link": "/",
@@ -111,8 +111,8 @@
       "icon": "../../assets/svg/base-sprite/base-sprite.svg#Box"
     },
     {
-      "name": "Form Control",
-      "link": "components/form-control",
+      "name": "Form",
+      "link": "components/form",
       "active": true,
       "icon": "../../assets/svg/base-sprite/base-sprite.svg#Box"
     }
