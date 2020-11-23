@@ -125,12 +125,12 @@ $theme: $main_theme;
 
   &_primary {
     @extend .button;
-    @include button_colors_new($primary_button_colorset);
+    @include button_colors($primary_button_colorset);
   }
 
   &_outline {
     @extend .button;
-    @include button_colors_new($outline_button_colorset);
+    @include button_colors($outline_button_colorset);
   }
 
   &_disabled {
@@ -151,17 +151,17 @@ $theme: $main_theme;
 
   &_danger {
     @extend .button;
-    @include button_colors_new($danger_button_colorset);
+    @include button_colors($danger_button_colorset);
   }
 
   &_success {
     @extend .button;
-    @include button_colors_new($success_button_colorset);
+    @include button_colors($success_button_colorset);
   }
 
   &_warning {
     @extend .button;
-    @include button_colors_new($warning_button_colorset);
+    @include button_colors($warning_button_colorset);
   }
 
   &_for-input {
@@ -259,10 +259,7 @@ $theme: $main_theme;
       border-width: 1px;
 
       &.selected {
-        @include button_colors_new($primary_button_colorset);
-      }
-
-      &:hover {
+        @include button_colors($primary_button_colorset);
         z-index: 2;
       }
     }
@@ -276,10 +273,7 @@ $theme: $main_theme;
       border-width: 1px;
 
       &.selected {
-        @include button_colors_new($danger_button_colorset);
-      }
-
-      &:hover {
+        @include button_colors($danger_button_colorset);
         z-index: 2;
       }
     }
@@ -293,10 +287,7 @@ $theme: $main_theme;
       border-width: 1px;
 
       &.selected {
-        @include button_colors_new($warning_button_colorset);
-      }
-
-      &:hover {
+        @include button_colors($warning_button_colorset);
         z-index: 2;
       }
     }
@@ -309,10 +300,7 @@ $theme: $main_theme;
       @extend .button_outline;
 
       &.selected {
-        @include button_colors_new($success_button_colorset);
-      }
-
-      &:hover {
+        @include button_colors($success_button_colorset);
         z-index: 2;
       }
     }
@@ -326,29 +314,26 @@ $theme: $main_theme;
       border-width: 1px;
 
       &.selected {
+        z-index: 2;
         svg {
           fill: #fff !important; 
         }
 
         &:nth-child(4n+1) {
-          @include button_colors_new($primary_button_colorset);
+          @include button_colors($primary_button_colorset);
         }
   
         &:nth-child(4n+2) {      
-          @include button_colors_new($success_button_colorset);
+          @include button_colors($success_button_colorset);
         }
   
         &:nth-child(4n+3) {
-          @include button_colors_new($warning_button_colorset);
+          @include button_colors($warning_button_colorset);
         }
   
         &:nth-child(4n+4) {
-          @include button_colors_new($danger_button_colorset);
+          @include button_colors($danger_button_colorset);
         }
-      }
-
-      &:hover {
-        z-index: 2;
       }
     }
   }

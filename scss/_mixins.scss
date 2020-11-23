@@ -1,22 +1,5 @@
 // Mixin for set button state colors ->
-
-@mixin button_colors($normal_colors, $hover_colors, $active_colors: $hover_colors, $visited_colors: $normal_colors) {
-  @include set_colors($normal_colors);
-
-  &:visited {
-    @include set_colors($visited_colors);
-  }
-
-  &:hover {
-    @include set_colors($hover_colors);
-  }
-
-  &:active {
-    @include set_colors($active_colors);
-  }
-}
-
-@mixin button_colors_new($colorset) {
+@mixin button_colors($colorset) {
   $_temp_normal: #000, #fff, rgba(0, 0, 0, 0);
   $_temp_hover: #000, #fff, rgba(0, 0, 0, 0);
 

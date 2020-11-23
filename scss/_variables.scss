@@ -76,6 +76,26 @@ $danger_button_colorset : (
   "hover_colors": (#fff, map_get($theme, 'danger-hover'), rgba(0, 0, 0, 0)),
 );
 
+$input_group__info_button_colorset : (
+  "normal_colors": (#fff, map_get($theme, 'info_input_border_color'), map_get($theme, 'info_input_border_color')),
+  "hover_colors": ( #fff, rgba(map_get($theme, 'info_input_border_color'), 0.7), rgba(0, 0, 0, 0)),
+);
+
+$input_group__success_button_colorset : (
+  "normal_colors": ( #fff, map_get($theme, 'success_input_border_color'), map_get($theme, 'success_input_border_color')),
+  "hover_colors": ( #fff, rgba(map_get($theme, 'success_input_border_color'), 0.7), rgba(0, 0, 0, 0)),
+);
+
+$input_group__warning_button_colorset : (
+  "normal_colors": ( #fff, map_get($theme, 'warning_input_border_color'), map_get($theme, 'warning_input_border_color')),
+  "hover_colors": ( #fff, rgba(map_get($theme, 'warning_input_border_color'), 0.7), rgba(0, 0, 0, 0)),
+);
+
+$input_group__danger_button_colorset : (
+  "normal_colors": (  #fff, map_get($theme, 'danger_input_border_color'), map_get($theme, 'danger_input_border_color')),
+  "hover_colors": ( #fff, rgba(map_get($theme, 'danger_input_border_color'), 0.7), rgba(0, 0, 0, 0)),
+);
+
 //Button colors sets <-
 
 // Text sizes ->
