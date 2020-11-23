@@ -9,6 +9,7 @@ $theme: $main_theme;
   line-height: 20px;
   height: 50px;
   border-radius: map_get($theme, 'main-border-radius');
+  padding: 16px 19px;
 
   &::placeholder {
     color: map_get($theme, 'grey-dark_3');
@@ -16,6 +17,7 @@ $theme: $main_theme;
 
   &_small {
     @extend .form-control;
+    padding: 11px 15px;
 
     height: 40px;
     font-size: 16px;
@@ -24,6 +26,7 @@ $theme: $main_theme;
 
   &_large {
     @extend .form-control;
+    padding: 18px 22px;
 
     height: 60px;
     font-size: 20px;

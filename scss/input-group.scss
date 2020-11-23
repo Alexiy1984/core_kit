@@ -5,15 +5,6 @@
 
 $theme: $main_theme;
 
-$info_button_normal_colorset : #fff, map_get($theme, 'info_input_border_color'), map_get($theme, 'info_input_border_color');
-$info_button_hover_colorset : #fff, rgba(map_get($theme, 'info_input_border_color'), 0.7), rgba(0, 0, 0, 0);
-$success_button_normal_colorset : #fff, map_get($theme, 'success_input_border_color'), map_get($theme, 'success_input_border_color');
-$success_button_hover_colorset : #fff, rgba(map_get($theme, 'success_input_border_color'), 0.7), rgba(0, 0, 0, 0);
-$warning_button_normal_colorset : #fff, map_get($theme, 'warning_input_border_color'), map_get($theme, 'warning_input_border_color');
-$warning_button_hover_colorset : #fff, rgba(map_get($theme, 'warning_input_border_color'), 0.7), rgba(0, 0, 0, 0);
-$danger_button_normal_colorset : #fff, map_get($theme, 'danger_input_border_color'), map_get($theme, 'danger_input_border_color');
-$danger_button_hover_colorset : #fff, rgba(map_get($theme, 'danger_input_border_color'), 0.7), rgba(0, 0, 0, 0);
-
 @mixin input_border_colors($color) {
   border-color: $color;
 
@@ -83,6 +74,7 @@ $danger_button_hover_colorset : #fff, rgba(map_get($theme, 'danger_input_border_
     .form-control {
       height: 100%;
       color: map_get($theme, 'grey-dark_6');
+      padding: 16px 19px;
 
       &::placeholder {
         color: map_get($theme, 'grey-dark_3');
@@ -144,6 +136,10 @@ $danger_button_hover_colorset : #fff, rgba(map_get($theme, 'danger_input_border_
       height: 40px;
       
       @include text-size(16px);
+
+      .form-control {
+        padding: 11px 15px;
+      }
     }
 
     &_large  {
@@ -151,6 +147,10 @@ $danger_button_hover_colorset : #fff, rgba(map_get($theme, 'danger_input_border_
       height: 60px;
     
       @include text-size(20px);
+
+      .form-control {
+        padding: 18px 22px;
+      }
     }
 
     %info_button_colors {
@@ -212,9 +212,35 @@ $danger_button_hover_colorset : #fff, rgba(map_get($theme, 'danger_input_border_
     &_noborder {
       @extend .input-group;
 
+      &:focus-within {
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+
+      &.input-group_success {
+        &:focus-within {
+          box-shadow: rgba(1, 160, 1, 0.25) 0px 0px 0px 0.2rem;
+        }
+      }
+
+      &.input-group_warning {
+        &:focus-within {
+          box-shadow: rgba(254, 183, 47, 0.25) 0px 0px 0px 0.2rem;
+        }
+      }
+
+      &.input-group_danger {
+        &:focus-within {
+          box-shadow: rgba(250, 74, 106, 0.25) 0px 0px 0px 0.2rem;
+        }
+      }
+
       .form-control {
         border-left-width: 0;
         border-right-width: 0;
+
+        &:focus {
+          box-shadow: none;
+        }
       }
 
       .input-group-text {
