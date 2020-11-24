@@ -56,6 +56,7 @@ $theme: $main_theme;
 
     &:hover {
       .page-link {
+        transition: background-color 0.15s ease-in, color 0.15s ease-in;
         background-color: map_get($theme, 'accent_1_3');
         color: #fff;
       }
@@ -63,6 +64,7 @@ $theme: $main_theme;
 
     &.active {
       .page-link {
+        border-color: #000;
         background-color: map_get($theme, 'accent_1_4');
         color: #fff;
       }
