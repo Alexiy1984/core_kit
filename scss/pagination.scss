@@ -64,7 +64,8 @@ $theme: $main_theme;
 
     &.active {
       .page-link {
-        border-color: #000;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
         background-color: map_get($theme, 'accent_1_4');
         color: #fff;
       }
@@ -72,6 +73,7 @@ $theme: $main_theme;
     
     &.control {
       .page-link {
+        transition: color 0.15s ease-in;
         display: inline-flex;
         align-items: center;
         background-color: #fff;
@@ -110,10 +112,94 @@ $theme: $main_theme;
     }
 
     &.disabled {
+      pointer-events: none;
+      
       .page-link {
         background-color: map_get($theme, 'grey-dark_1');
         color: map_get($theme, 'grey-dark_2');
       }  
+    }
+  }
+
+  &_secondary {
+    @extend .pagination;
+
+    .page-item {
+      &:hover {
+        .page-link {
+          background-color: map_get($theme, 'accent_2_3');
+        }
+      }
+  
+      &.active {
+        .page-link {
+          background-color: map_get($theme, 'accent_2_4');
+        }
+      }
+      
+      &.control {
+        .page-link {
+          background-color: #fff;
+        }
+
+        &:hover {
+          color: map_get($theme, 'accent_2_4');
+  
+          svg {
+            fill: map_get($theme, 'accent_2_4');
+          }
+        }
+      }
+
+      &.disabled {
+        pointer-events: none;
+        
+        .page-link {
+          background-color: map_get($theme, 'grey-dark_1');
+          color: map_get($theme, 'grey-dark_2');
+        }  
+      }
+    }
+  }
+
+  &_dark {
+    @extend .pagination;
+
+    .page-item {
+      &:hover {
+        .page-link {
+          background-color: map_get($theme, 'grey-dark_4');
+        }
+      }
+  
+      &.active {
+        .page-link {
+          background-color: map_get($theme, 'grey-dark_5');
+        }
+      }
+      
+      &.control {
+        .page-link {
+          background-color: #fff;
+        }
+
+        &:hover {
+          color: map_get($theme, 'grey-dark_4');
+  
+          svg {
+            fill: map_get($theme, 'grey-dark_4');
+          }
+        }
+      }
+
+      &.disabled {
+        pointer-events: none;
+        
+        .page-link {
+          background-color: map_get($theme, 'grey-dark_1');
+          color: map_get($theme, 'grey-dark_2');
+        }  
+      }
     }
   }
 

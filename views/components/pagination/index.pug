@@ -8,11 +8,28 @@ block append styles
   link(rel="stylesheet", href="../../stylesheets/pagination.css")
 
 block content
-  .row.mt-5.mb-4
-    include pagination
-  .row.mb-4
-    include pagination_with-controls  
-  .row.mb-4
-    include pagination_controls
-  .row.mb-4
-    include pagination_short     
+  .row
+    .col-12.col-lg-4.mb-4
+      include pagination  
+    .col-12.col-lg-4.mb-4
+      include pagination_secondary 
+    .col-12.col-lg-4.mb-4
+      include pagination_dark   
+    .col-12.mb-4.d-flex.flex-wrap
+      include pagination_with-controls
+      .mr-3
+      include pagination_short     
+      .mr-3
+      include pagination_controls
+    .col-12.mb-4.d-flex.flex-wrap
+      include pagination_with-controls_secondary  
+      .mr-3
+      include pagination_short_secondary
+      .mr-3
+      include pagination_controls_secondary
+    .col-12.mb-4.d-flex.flex-wrap
+      include pagination_with-controls_dark 
+      .mr-3
+      include pagination_short_dark
+      .mr-3
+      include pagination_controls_dark  
