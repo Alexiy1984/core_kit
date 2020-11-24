@@ -172,4 +172,37 @@ $(function() {
   });
 });  
 //// Input group card inputs actions <--
+//// Input group number actions -->
+$(function() {
+  var number_inputs = [
+    'input-group_number',
+    'input-group_number_small',
+    'input-group_number_large',
+  ];
+
+  for (var n in number_inputs) {
+    var number = number_inputs[n];
+    (function(nbr){
+      $(`.${nbr} .input-group_number__control`).on('click', function(){
+        var is_plus = $(this).next('.input-group_number__control').length;
+        var this_input = $(`.${nbr}`).find('input');
+        var this_value = $(`.${nbr}`).find('input').val();
+        if (is_plus) {
+          if (!this_value) {
+            this_input.val(1);
+          } else {
+            this_input.val(parseInt(this_value) + 1);
+          }
+        } else {
+          if (!this_value) {
+            this_input.val(-1);
+          } else {
+            this_input.val(parseInt(this_value) - 1);
+          }
+        }
+      });
+    }(number))
+  }
+});
+//// Input group number actions <--
 // Input group Component scripts <--

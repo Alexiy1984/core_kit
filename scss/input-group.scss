@@ -351,6 +351,109 @@ $theme: $main_theme;
       }
     }
 
+    &_number {
+      $number: &;
+      @extend .input-group;
+      display: inline-flex;
+      width: 113px;
+      overflow: visible;
+
+      .form-control {
+        width: auto;
+        flex: 0;
+        text-align: center;
+        min-width: 78px;
+      }
+
+      &__controls {
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        border-style: solid;
+        border-width: 1px;
+        border-color: inherit;
+        border-top-right-radius: map_get($theme, 'main-border-radius');
+        border-bottom-right-radius: map_get($theme, 'main-border-radius');
+
+        #{$number}__control {
+          display: flex;
+          height: 50%;
+          padding: 12px 12px 0 12px;
+  
+          svg {
+            fill: map-get($theme, 'grey-dark_3');
+            width: 9px;
+            height: 6px;
+
+            path {
+              transition: fill 0.15s ease-in;
+              fill: inherit;
+              stroke: inherit;
+            }
+          }
+
+          &:hover {
+            cursor: pointer;
+
+            svg {
+              fill: map-get($theme, 'grey-dark_4');
+            }
+          }
+  
+          &:last-child {
+            padding: 0 12px 12px;
+            align-items: flex-end;
+          }
+        }
+      }
+
+      &_small {
+        @extend #{$number};
+        @extend .input-group_small;
+        width: 100px;
+
+        .form-control {
+          min-width: 68px;
+        }
+
+        #{$number}__controls {
+          height: 40px;
+
+          #{$number}__control {
+            padding: 9px 11px 0 10px;
+
+            &:last-child {
+              padding: 0 11px 9px 10px;
+              align-items: flex-end;
+            }
+          }
+        }
+      }
+
+      &_large {
+        @extend #{$number};
+        @extend .input-group_large;
+        width: 120px;
+
+        .form-control {
+          min-width: 88px;
+        }
+
+        #{$number}__controls {
+          height: 60px;
+
+          #{$number}__control {
+            padding: 16px 12px 0 10px;
+
+            &:last-child {
+              padding: 0 12px 16px 10px;
+              align-items: flex-end;
+            }
+          }
+        }
+      }
+    }
+
     &_lowborder {
       @extend .input-group_noborder;
 
