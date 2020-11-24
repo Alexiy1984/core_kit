@@ -4,8 +4,8 @@
 $theme: $main_theme;
 
 @mixin create_sizes_for_elements($font_size, $padding_y, $padding_x, $height, $el_indents) {
-  height: $height;
-  font-size: $font_size;
+  height: $height#{'px'};
+  font-size: $font_size#{'px'};
   padding: 0;
 
   .btn,
