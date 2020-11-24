@@ -92,6 +92,8 @@ $theme: $main_theme;
 
     &.counter {
       pointer-events: none;
+      min-width: 85px;
+      text-align: center;
 
       .page-link {
         color: map_get($theme, 'grey-dark_3');
