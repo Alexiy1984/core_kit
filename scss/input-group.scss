@@ -99,6 +99,14 @@ $theme: $main_theme;
 
       &::placeholder {
         color: map_get($theme, 'grey-dark_3');
+        opacity: 1;
+        transition: opacity 0.5s ease-in;
+      }
+
+      &:focus {
+        &::placeholder {
+          opacity: 0;
+        }
       }
     }
 
