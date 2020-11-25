@@ -19,6 +19,9 @@ $theme: $main_theme;
     }
 
     &:focus {
+      box-shadow: none;
+      border-color: map_get($theme, 'info_input_border_color');
+
       &::placeholder {
         opacity: 0;
       }
@@ -67,7 +70,6 @@ $theme: $main_theme;
       &:focus,
       &.focus {
         border-color: rgba(1, 160, 1, 1);
-        box-shadow: rgba(1, 160, 1, 0.25) 0px 0px 0px 0.2rem;
       }
     }
   
@@ -82,7 +84,6 @@ $theme: $main_theme;
       &:focus,
       &.focus {
         border-color: rgba(254, 183, 47, 1);
-        box-shadow: rgba(254, 183, 47, 0.25) 0px 0px 0px 0.2rem;
       }
     }
   
@@ -97,7 +98,6 @@ $theme: $main_theme;
       &:focus,
       &.focus {
         border-color: rgba(250, 74, 106, 1);
-        box-shadow: rgba(250, 74, 106, 0.25) 0px 0px 0px 0.2rem;
       }
     }
   }

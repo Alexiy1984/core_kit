@@ -26,7 +26,6 @@ $theme: $main_theme;
     &:focus,
     &.focus {
       border-color: $color;
-      box-shadow: rgba($color, 0.25) 0px 0px 0px 0.2rem;
     }
   }
 }
@@ -68,21 +67,25 @@ $theme: $main_theme;
 
 .input {
   &-group {
+    $input_group: &;
     height: 50px;
     border-radius: map_get($theme, 'main-border-radius');
     border-color: map_get($theme, 'grey-dark_2');
 
     & > * {
-      border-color: map_get($theme, 'grey-dark_2');
+      border-color: inherit;
+      transition: none;
     }
 
     .input-group-text {
-      border-color: map_get($theme, 'grey-dark_2');
+      border-color: inherit;
+      transition: none;
     }
 
     @include text-size(18px);
 
     svg {
+      transition: fill 0.15s ease-in;
       fill: map_get($theme, 'grey-dark_3');
 
       path {
@@ -95,7 +98,9 @@ $theme: $main_theme;
       height: 100%;
       color: map_get($theme, 'grey-dark_6');
       padding: 16px 19px;
-      border-color: map_get($theme, 'grey-dark_2');
+      border-color: inherit;
+      box-shadow: none;
+      transition: none;
 
       &::placeholder {
         color: map_get($theme, 'grey-dark_3');
@@ -104,6 +109,8 @@ $theme: $main_theme;
       }
 
       &:focus {
+        border-color: map_get($theme, 'info_input_border_color');
+
         &::placeholder {
           opacity: 0;
         }
@@ -183,6 +190,16 @@ $theme: $main_theme;
       }
     }
 
+    &:focus-within {
+      svg {
+        fill: map_get($theme, 'info_input_border_color');
+      }  
+
+      #{$input_group}__delimiter {
+        border-color: map_get($theme, 'info_input_border_color');
+      }
+    }
+
     &_small {
       @extend .input-group;
       height: 40px;
@@ -259,6 +276,16 @@ $theme: $main_theme;
         @extend .button;  
         @extend %info_button_colors;
       }
+
+      &:focus-within {
+        svg {
+          fill: map_get($theme, 'info_input_border_color');
+        }
+
+        #{$input_group}__delimiter {
+          border-color: map_get($theme, 'info_input_border_color');
+        }
+      }
     }
 
     &_success {
@@ -268,6 +295,16 @@ $theme: $main_theme;
       .button {
         @extend .button;  
         @extend %success_button_colors;
+      }
+
+      &:focus-within {
+        svg {
+          fill: map_get($theme, 'success_input_border_color');
+        }
+
+        #{$input_group}__delimiter {
+          border-color: map_get($theme, 'success_input_border_color');
+        }
       }
     }
 
@@ -279,6 +316,16 @@ $theme: $main_theme;
         @extend .button;  
         @extend %warning_button_colors;
       }
+
+      &:focus-within {
+        svg {
+          fill: map_get($theme, 'warning_input_border_color');
+        }
+
+        #{$input_group}__delimiter {
+          border-color: map_get($theme, 'warning_input_border_color');
+        }
+      }
     }
 
     &_danger {
@@ -289,30 +336,62 @@ $theme: $main_theme;
         @extend .button;  
         @extend %danger_button_colors;
       }
+
+      &:focus-within {
+        svg {
+          fill: map_get($theme, 'danger_input_border_color');
+        }
+
+        #{$input_group}__delimiter {
+          border-color: map_get($theme, 'danger_input_border_color');
+        }
+      }
     }
 
     &_noborder {
       @extend .input-group;
 
       &:focus-within {
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        border-color: map_get($theme, 'info_input_border_color');
+
+        #{$input_group}__delimiter {
+          border-color: map_get($theme, 'info_input_border_color');
+        }
       }
 
       &.input-group_success {
         &:focus-within {
-          box-shadow: rgba(1, 160, 1, 0.25) 0px 0px 0px 0.2rem;
+          svg {
+            fill: map_get($theme, 'success_input_border_color');
+          }
+
+          #{$input_group}__delimiter {
+            border-color: map_get($theme, 'success_input_border_color');
+          }
         }
       }
 
       &.input-group_warning {
         &:focus-within {
-          box-shadow: rgba(254, 183, 47, 0.25) 0px 0px 0px 0.2rem;
+          svg {
+            fill: map_get($theme, 'warning_input_border_color')
+          }
+
+          #{$input_group}__delimiter {
+            border-color: map_get($theme, 'warning_input_border_color');
+          }
         }
       }
 
       &.input-group_danger {
         &:focus-within {
-          box-shadow: rgba(250, 74, 106, 0.25) 0px 0px 0px 0.2rem;
+          svg {
+            fill: map_get($theme, 'danger_input_border_color')
+          }
+
+          #{$input_group}__delimiter {
+            border-color: map_get($theme, 'danger_input_border_color');
+          }
         }
       }
 
