@@ -63,6 +63,7 @@ $theme: $main_theme;
   &-menu {
     border-radius: map_get($theme, 'main-border-radius');
     padding: 4px;
+    margin-top: 14px;
   }
 
   &-item {
