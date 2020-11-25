@@ -24,6 +24,18 @@ $theme: $main_theme;
       display: inline-flex;
       align-items: center;
 
+      &::after {
+        position: absolute;
+        width: 100%;
+        bottom: -2px;
+        left: 0;
+        height: 2px;
+        display: block;
+        content: '';
+        background-color: rgba(0, 0, 0, 0);
+        transition: background-color 0.15s ease-in;
+      }
+
       svg {
         transition: fill 0.15s ease-in;
         width: 18px;
@@ -61,7 +73,6 @@ $theme: $main_theme;
           height: 2px;
           display: block;
           content: '';
-          background-color: map_get($theme, 'grey-dark_3');
         }
       }
 
@@ -73,13 +84,6 @@ $theme: $main_theme;
         }
   
         &::after {
-          position: absolute;
-          width: 100%;
-          bottom: -2px;
-          left: 0;
-          height: 2px;
-          display: block;
-          content: '';
           background-color: map_get($theme, 'accent_1_4');
         }
       }
@@ -131,6 +135,40 @@ $theme: $main_theme;
 
         span + svg {
           margin-left: 13px;
+        }
+      }
+    }
+
+    &_secondary {
+      @extend .nav-tabs;
+      .nav-link {
+        &.active {
+          color: map_get($theme, 'accent_2_4');
+  
+          svg {
+            fill: map_get($theme, 'accent_2_4');
+          }
+    
+          &::after {
+            background-color: map_get($theme, 'accent_2_4');
+          }
+        }
+      }
+    }
+
+    &_dark {
+      @extend .nav-tabs;
+      .nav-link {
+        &.active {
+          color: map_get($theme, 'dark-active');
+  
+          svg {
+            fill: map_get($theme, 'dark-active');
+          }
+    
+          &::after {
+            background-color: map_get($theme, 'dark-active');
+          }
         }
       }
     }
