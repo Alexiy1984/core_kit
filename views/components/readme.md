@@ -9,5 +9,7 @@
 * [pagination](pagination/)
 * [tag](tag/)
 * [toggler] (toggler/)
+* [modal] (modal/)
+* [alert] (alert/)
 
 ### [Go to Main page](/)
