@@ -101,6 +101,24 @@ $theme: $main_theme;
     input:checked ~ span {
       color: map_get($theme, 'accent_1_4');
     }
+
+    &:hover {
+      color: map-get($theme, 'grey-dark_4');
+      background-color: map-get($theme, 'grey-dark_1');
+
+      svg {
+        fill: map-get($theme, 'grey-dark_4');
+      }
+    }
+
+    &:active {
+      color: #fff;
+      background-color: map-get($theme, 'accent_1_4');
+
+      svg {
+        fill: #fff;
+      }
+    }
   }
 
   &-toggle {
