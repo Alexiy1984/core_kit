@@ -119,7 +119,7 @@ function buildPugComponents() {
   var comps_dirs = getDirectories('./views/components');
 
   comps_dirs.forEach(name => {
-    console.log(`\x1b[37m Buld \x1b[32m${name} \x1b[34mcomponent`);
+    console.log(`\x1b[37m Build \x1b[32m${name} \x1b[34mcomponent`);
     buildPugComponent(name);
     compiled_comps++;
   });
@@ -217,7 +217,13 @@ function browserSync(cb) {
     console.log(`File \x1b[35m${path}\x1b[37m was \x1b[36mchanged`);
   });;
   watch(['./views/index.pug', './views/components/index.pug'], buildIndex);
-  watch(['./views/components/**/*.pug', '!./views/components/index.pug'], buildPugComponents);
+  watch(['./views/components/**/*.pug', '!./views/components/index.pug'], {delay: 3000})
+    .on('change', function (path) {
+      console.log(`File \x1b[35m${path}\x1b[37m was \x1b[36mchanged`);
+      var changed_dir = path.replace(buildPaths.source.componentsDir, '').split('/')[1];
+      buildPugComponent(changed_dir);
+      console.log(`\x1b[37mBuild \x1b[32m${changed_dir} \x1b[34mcomponent`);
+    });
   watch('./scss', generateCSS);
   watch('./views/components/**/*.js', bulidMainJs);
   watch('./public/**/*.html').on('change', sync.reload);
