@@ -29,7 +29,6 @@ html(lang="en")
               - var active = breadcrumb.active 
               - var icon = breadcrumb.icon 
               include components/breadcrumbs/breadcrumbs__item
-    include layouts/pagination_container
     include layouts/typography_container
     .container
       .row
@@ -57,7 +56,20 @@ html(lang="en")
     include components/brand-colors-palette
     .container 
       .row
-        .col-12.mb-5
-          input(type="checkbox")
-          input(type="checkbox" checked=true)
+        .col-12.mb-5.d-flex.flex-wrap
+          include components/custom-checkbox/custom-checkbox
+          .ml-3
+          include components/custom-checkbox/custom-checkbox_disabled
+          .ml-3
+          include components/custom-checkbox/custom-checkbox_checked
+          .ml-3
+          include components/custom-checkbox/custom-checkbox_secondary
+          .ml-5
+          include components/custom-radio/custom-radio
+          .ml-3
+          include components/custom-radio/custom-radio_disabled
+          .ml-3
+          include components/custom-radio/custom-radio_checked 
+          .ml-3
+          include components/custom-radio/custom-radio_secondary
 

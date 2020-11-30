@@ -103,6 +103,11 @@ $theme: $main_theme;
   }
 
   &-group {
+    box-shadow: none;
+    &:focus-within {
+      box-shadow: none;
+    }
+
     label {
       color: map_get($theme, 'grey-dark_3');
       font-size: 16px;

@@ -30,8 +30,8 @@
       "active": true
     },
     {
-      "name": "Form control",
-      "link": "components/form-control",
+      "name": "Form",
+      "link": "components/form",
       "active": false
     }
   ],
